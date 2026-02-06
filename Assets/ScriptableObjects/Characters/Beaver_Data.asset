@@ -16,7 +16,8 @@ MonoBehaviour:
   age: 6
   weight: 70
   requiredJacket: 0
-  fullBodySprite: {fileID: 1517929418074419074, guid: 32115b9ddf8e81f47969f390b361c0ed, type: 3}
-  portraitSprite: {fileID: 6769218296811165538, guid: 5e335003e6d9391429d50151278914d2, type: 3}
-  displaySize: {x: 150, y: 250}
-  displayPosition: {x: 400, y: -270}
+  fullBodySprite: {fileID: 5384494250188864148, guid: 7568f3baf2b6c9e4cab66b36484b900e, type: 3}
+  portraitSprite: {fileID: -2101692748250844667, guid: 9b8a65d0069d078488a5e27d853c9da5, type: 3}
+  displaySize: {x: 300, y: 400}
+  displayPosition: {x: 500, y: -450}
+  speechBubbleAnchoredPosition: {x: -270, y: 30}

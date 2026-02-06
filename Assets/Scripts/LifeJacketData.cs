@@ -7,4 +7,6 @@ public class LifeJacketData : ScriptableObject
     public LifeJacketType jacketType;
     public Sprite displaySprite;
     public string description;
+
+    public Sprite fullbodysprite;
 }

@@ -23,5 +23,10 @@ public class CharacterData : ScriptableObject
     [Header("Display Settings")]
     public Vector2 displaySize; // Width, Height
     public Vector2 displayPosition; // UI anchored position
+
+    [Header("Speech Bubble Settings")]
+    public Vector2 speechBubbleAnchoredPosition;
+
+
 }
 
