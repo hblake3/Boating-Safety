@@ -7,7 +7,7 @@ public class LifeJacketSelectionUI : MonoBehaviour
     public Image characterDisplayImage;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI detailsText;
-    public FeedbackPopupUI feedbackPopup;
+    //public FeedbackPopupUI feedbackPopup;
 
 
     public void SelectJacket(LifeJacketData jacket)
