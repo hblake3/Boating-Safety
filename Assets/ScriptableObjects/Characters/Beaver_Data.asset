@@ -15,9 +15,10 @@ MonoBehaviour:
   characterName: Buddy the Beaver
   age: 6
   weight: 70
-  requiredJacket: 0
+  requiredJacket: 2
   fullBodySprite: {fileID: 5384494250188864148, guid: 7568f3baf2b6c9e4cab66b36484b900e, type: 3}
   portraitSprite: {fileID: -2101692748250844667, guid: 9b8a65d0069d078488a5e27d853c9da5, type: 3}
   displaySize: {x: 300, y: 400}
-  displayPosition: {x: 500, y: -450}
-  speechBubbleAnchoredPosition: {x: -270, y: 30}
+  displayPosition: {x: -240, y: -240}
+  speechBubbleAnchoredPosition: {x: -140, y: 30}
+  inspectionScale: 1.8

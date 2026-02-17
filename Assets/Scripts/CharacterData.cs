@@ -27,6 +27,8 @@ public class CharacterData : ScriptableObject
     [Header("Speech Bubble Settings")]
     public Vector2 speechBubbleAnchoredPosition;
 
+    [Header("Inspection Settings")]
+    public float inspectionScale = 1.8f;
 
 }
 

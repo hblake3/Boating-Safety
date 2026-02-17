@@ -67,6 +67,8 @@ public class CharacterSelectionUI : MonoBehaviour
         // Dialogue change event
         dialogueController.OnCharacterSelected(character);
 
+        Debug.Log($"Show inspection scale: {character.inspectionScale}.");
+
     }
 
     public void OnReadyButtonPressed()
