@@ -8,12 +8,18 @@ public class BoatController : MonoBehaviour
     [SerializeField] GameObject boatGO;
 
     [Header("Movement")]
-    public float moveSpeed = 5f;
     public float xLimit = 5.5f; // the x-position boundaries the boat can move within
 
     [Header("Rotation")]
     public float rotationAngle = 30f;
     public float rotationpeed = 6f;       // how fast it rotates
+
+    [Header("Speed")]
+    public float[] moveSpeeds = new float[] { 2.5f, 5f, 7.5f };
+    public int currentSpeedIndex = 1;
+    public float moveSpeed;
+    public static float CurrentSpeed { get; private set; }
+
 
     // input variables for keyboard and UI (buttons)
     // -1 left, 1 right, 0 none
@@ -24,9 +30,16 @@ public class BoatController : MonoBehaviour
     // to store the starting rotation of the boat
     private Quaternion baseRotation;
 
+    // [ DELEGATES ]
+    public delegate void OnSpeedChanged(float newSpeed);
+    public static OnSpeedChanged onSpeedChanged;
+
     void Start()
     {
-        baseRotation = boatGO.transform.rotation;
+        baseRotation = boatGO.transform.rotation; // set the default boat rotation at game start
+        moveSpeed = moveSpeeds[currentSpeedIndex]; // set the default starting speed at game start
+        CurrentSpeed = moveSpeed;
+        BroadcastSpeed(); // ensure the speed UI is updated to the default starting speed upon game start
     }
 
     void Update()
@@ -103,4 +116,37 @@ public class BoatController : MonoBehaviour
     {
         uiInput = 0f;
     }
+
+    public void PressSpeedUp()
+    {
+        if(currentSpeedIndex >= moveSpeeds.Length - 1)
+        {
+            Debug.Log("Already at max speed!"); // ** TEST CAN GO HERE **
+            return; 
+        }
+        currentSpeedIndex++;
+        moveSpeed = moveSpeeds[currentSpeedIndex];
+        BroadcastSpeed();
+    }
+
+    public void PressSpeedDown()
+    {
+        if (currentSpeedIndex <= 0)
+        {
+            Debug.Log("Already at min speed!"); // ** TEST CAN GO HERE **
+            return;
+        }
+        currentSpeedIndex--;
+        moveSpeed = moveSpeeds[currentSpeedIndex];
+        BroadcastSpeed();
+    }
+
+    private void BroadcastSpeed()
+    {
+        CurrentSpeed = moveSpeed;
+        onSpeedChanged?.Invoke(moveSpeed);
+    }
+
+    
+
 }
