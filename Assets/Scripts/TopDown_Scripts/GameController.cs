@@ -4,8 +4,16 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private ScoreController scoreController;
     [SerializeField] private SpeechBubbleController speech;
     [SerializeField] private LogDodgeControllerNew logDodge;
+
+    // [ DELEGATES ]
+    public delegate void OnBoatingStarted();
+    public static OnBoatingStarted onBoatingStarted;
+
+    public delegate void OnBoatingStopped();
+    public static OnBoatingStopped onBoatingStopped;
 
     private void OnEnable()
     {
@@ -47,17 +55,33 @@ public class GameController : MonoBehaviour
 
     private void StartLogDodge()
     {
+        // start the log segment and begin incrementing the score
         logDodge.StartSegment();
+
+        // broadcast the boating has started
+        BroadcastBoatingStarted();
     }
 
     private void ShowPostLogDialogue()
     {
+        BroadcastBoatingStopped();
+
         speech.StartDialogue(new List<string>
     {
         "Great ",
         "Fog will make hazards harder to see.",
         "Reduce speed and proceed carefully."
     });
+    }
+
+    private void BroadcastBoatingStarted()
+    {
+        onBoatingStarted?.Invoke();
+    }
+
+    private void BroadcastBoatingStopped()
+    {
+        onBoatingStopped?.Invoke();
     }
 
 }

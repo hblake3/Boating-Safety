@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,10 +16,14 @@ public class BoatController : MonoBehaviour
     public float rotationpeed = 6f;       // how fast it rotates
 
     [Header("Speed")]
-    public float[] moveSpeeds = new float[] { 2.5f, 5f, 7.5f };
+    public float[] moveSpeeds = new float[] { 3.5f, 5f, 7.5f };
     public int currentSpeedIndex = 1;
     public float moveSpeed;
     public static float CurrentSpeed { get; private set; }
+
+    // Trees, logs, etc, are controlled by the boats speed, but the boat itself moves too slowly.
+    // This isn't a clean solution, but we'll increase the boats speed via this modifier and leave everything else alone for now.
+    public float boatSpeedMultiplier = 1.5f;
 
 
     // input variables for keyboard and UI (buttons)
@@ -33,6 +38,17 @@ public class BoatController : MonoBehaviour
     // [ DELEGATES ]
     public delegate void OnSpeedChanged(float newSpeed);
     public static OnSpeedChanged onSpeedChanged;
+
+
+    private void OnEnable()
+    {
+        
+    }
+
+    private void OnDisable()
+    {
+        
+    }
 
     void Start()
     {
@@ -53,6 +69,11 @@ public class BoatController : MonoBehaviour
         HandleRotation();
     }
 
+    public float[] GetMoveSpeeds()
+    {
+        return moveSpeeds;
+    }
+
     private void ReadKeyboardInput()
     {
         keyboardInput = 0f;
@@ -66,7 +87,7 @@ public class BoatController : MonoBehaviour
     private void HandleMovement()
     {
         Vector3 pos = boatGO.transform.position;
-        pos.x += input * moveSpeed * Time.deltaTime;
+        pos.x += input * moveSpeed * Time.deltaTime * boatSpeedMultiplier;
         pos.x = Mathf.Clamp(pos.x, -xLimit, xLimit);
         boatGO.transform.position = pos;
     }
@@ -147,6 +168,5 @@ public class BoatController : MonoBehaviour
         onSpeedChanged?.Invoke(moveSpeed);
     }
 
-    
 
 }

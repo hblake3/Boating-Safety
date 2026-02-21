@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEditor.Rendering.LookDev;
+
 using static GameManager;
 
 public class SceneFlowController : MonoBehaviour

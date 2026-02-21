@@ -11,7 +11,7 @@ public class LogDodgeControllerNew : MonoBehaviour
     [SerializeField] float spawnStartY = 14f;    // top of wave formation
     [SerializeField] float verticalSpacing = 2.5f;
     [SerializeField] float despawnY = -10f;
-    [SerializeField] float timeBetweenWaves = 2.5f;
+    [SerializeField] float timeBetweenWaves = 1.75f;
 
     private const float LEFT = -5f;
     private const float MIDLEFT = -2.5f;
