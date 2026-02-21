@@ -3,6 +3,14 @@ using static GameManager;
 
 public class SelectionDialogueController : MonoBehaviour
 {
+    public enum SelectionState
+    {
+        CharacterSelection,
+        ReadyPrompt,
+        LifeJacketSelection,
+        ConfirmJacket
+    }
+
     public SpeechBubbleUI speechBubble;
     public RectTransform characterRect;
 
@@ -36,5 +44,21 @@ public class SelectionDialogueController : MonoBehaviour
             "Are you sure?\nClick the check if you are!",
             character.speechBubbleAnchoredPosition
         );
+    }
+
+    public void OnNextClicked1(CharacterData character)
+    {
+       speechBubble.Show(
+            "Great job! Now lets make sure my life jacket is safe and secure!",
+            character.speechBubbleAnchoredPosition
+       );
+
+        speechBubble.ShowNextButton();
+
+    }
+
+    public void HideSpeechBubble()
+    {
+        speechBubble.Hide();
     }
 }
