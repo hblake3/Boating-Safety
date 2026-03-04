@@ -3,30 +3,39 @@ using UnityEngine.UI;
 
 public class InspectionHotspot : MonoBehaviour
 {
+    [Header("Setup")]
     public bool isCorrect;
-    public GameObject redXIcon;
+    public Sprite defaultSprite;
+    public Sprite wrongSprite;
+    public Sprite correctSprite;
 
+    private Image image;
     private Button button;
+
     private SafetyInspectionManager manager;
 
     void Awake()
     {
+        image = GetComponent<Image>();
         button = GetComponent<Button>();
-        manager = FindObjectOfType<SafetyInspectionManager>();
+        manager = Object.FindFirstObjectByType<SafetyInspectionManager>();
+
+        image.sprite = defaultSprite;
     }
 
-    public void OnClicked()
+    public void OnHotspotClicked()
     {
         if (isCorrect)
         {
-            manager.CorrectSelected();
+            manager.CorrectSelected(this);
+            image.sprite = correctSprite;
         }
         else
         {
             manager.WrongSelected(this);
+
         }
     }
-
     public void DisableHotspot()
     {
         button.interactable = false;
@@ -34,6 +43,14 @@ public class InspectionHotspot : MonoBehaviour
 
     public void ShowRedX()
     {
-        redXIcon.SetActive(true);
+        image.sprite = wrongSprite;
+    }
+
+    public void EnableHotspot()
+    {
+        image.sprite = defaultSprite;
+        button.interactable = true;
     }
 }
+
+

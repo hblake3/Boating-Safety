@@ -8,14 +8,12 @@ public class SpeechBubbleUI : MonoBehaviour
     public TextMeshProUGUI bubbleText;
     public FeedbackPopupUI feedbackPopup;
     public Button nextButton;
+    public Button nextButton2;
     public SceneFlowController sceneFlowController;
 
     void Start()
     {
         Hide();
-        // disable speech bubble's next button until needed
-        nextButton.gameObject.SetActive(false);
-
     }
 
     // Shows the speech bubble with specified text at a position offset from the character's position
@@ -29,6 +27,8 @@ public class SpeechBubbleUI : MonoBehaviour
 
     public void Hide()
     {
+        nextButton.gameObject.SetActive(false);
+        nextButton2.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -44,7 +44,11 @@ public class SpeechBubbleUI : MonoBehaviour
 
         // Trigger the zoom and transition in the SceneFlowController
         sceneFlowController.InspectionTransition();
+    }
 
+    public void ShowNextButton2()
+    {
+        nextButton2.gameObject.SetActive(true);
     }
 
 

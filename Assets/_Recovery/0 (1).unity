@@ -867,7 +867,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "2. Then, check the correct areas on the life jacket to make sure it\u2019s
+  m_text: "2. Then, check on the correct areas on the life jacket to make sure it\u2019s
     snug, secure, and ready for adventure!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4db3187c4a73856489b50600421fe3c8, type: 2}

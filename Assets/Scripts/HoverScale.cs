@@ -17,6 +17,20 @@ public class HoverScale : MonoBehaviour,
         targetScale = originalScale;
     }
 
+    void OnEnable()
+    {
+        // Ensure the object starts at its original scale when re-enabled
+        transform.localScale = originalScale;
+        targetScale = originalScale;
+    }
+
+    void OnDisable()
+    {
+        // Reset scale immediately when disabled so it won't reappear scaled
+        transform.localScale = originalScale;
+        targetScale = originalScale;
+    }
+
     void Update()
     {
         // Smoothly interpolate to the target scale
