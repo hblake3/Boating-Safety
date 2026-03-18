@@ -31,6 +31,9 @@ public class LogDodgeControllerNew : MonoBehaviour
     public delegate void OnLogDodgeComplete();
     public static OnLogDodgeComplete onLogDodgeComplete;
 
+    public delegate void OnLogDodgeFogComplete();
+    public static OnLogDodgeFogComplete onLogDodgeFogComplete;
+
 
     private void Awake()
     {
@@ -55,6 +58,16 @@ public class LogDodgeControllerNew : MonoBehaviour
         routine = StartCoroutine(RunSequence());
     }
 
+    public void StartFogSegment()
+    {
+        active = true;
+
+        if (routine != null)
+            StopCoroutine(routine);
+
+        routine = StartCoroutine(RunFogSequence());
+    }
+
     public void StopSegment()
     {
         active = false;
@@ -75,39 +88,53 @@ public class LogDodgeControllerNew : MonoBehaviour
         onLogDodgeComplete?.Invoke();
     }
 
+    private IEnumerator RunFogSequence()
+    {
+        yield return RunWave(CreateWave2());
+        yield return RunWave(CreateWave3());
+
+        active = false;
+
+        onLogDodgeFogComplete?.Invoke();
+    }
+
     private IEnumerator RunWave(List<float> lanes)
     {
-        float y = spawnStartY;
-        bool spawningRow = false;
+        float currentY = spawnStartY;
+        bool rowMode = false;
 
-        foreach (float lane in lanes)
+        foreach (float token in lanes)
         {
-            if (lane == ROW)
+            if (token == ROW)
             {
-                spawningRow = true;
+                rowMode = true;   // next logs share the same Y
                 continue;
             }
 
-            if (lane == DUMMY)
+            if (token == DUMMY)
             {
-                y += verticalSpacing;
-                spawningRow = false;
+                currentY += verticalSpacing; // move to next row
+                rowMode = false;
                 continue;
             }
 
-            var log = GetNext();
-            if (log != null)
-            {
-                float spawnYPos = spawningRow ? y : y;
-                log.Spawn(new Vector3(lane, spawnYPos, 0f));
-            }
+            SpawnLog(token, currentY);
 
-            if (!spawningRow)
-                y += verticalSpacing;
+            // If we're not in row mode, each log gets its own row
+            if (!rowMode)
+                currentY += verticalSpacing;
         }
 
         yield return new WaitUntil(AllLogsDespawned);
         yield return new WaitForSeconds(timeBetweenWaves);
+    }
+
+    private void SpawnLog(float laneX, float y)
+    {
+        var log = GetNext();
+        if (log == null) return;
+
+        log.Spawn(new Vector3(laneX, y, -1f));
     }
 
 

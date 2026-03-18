@@ -15,7 +15,7 @@ public class BoatCollision : MonoBehaviour
 
     void Awake()
     {
-        renderers = GetComponentsInChildren<Renderer>();
+        renderers = GetComponents<Renderer>();
     }
 
     private void OnTriggerEnter(Collider other)
