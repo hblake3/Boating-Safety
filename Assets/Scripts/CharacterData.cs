@@ -29,6 +29,5 @@ public class CharacterData : ScriptableObject
 
     [Header("Inspection Settings")]
     public float inspectionScale = 1.8f;
-
 }
 
