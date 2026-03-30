@@ -19,6 +19,7 @@ public class SceneFlowController : MonoBehaviour
 
     public SafetyInspectionManager safetyInspectionManager;
     public SelectionDialogueController dialogueController;
+    public GearSelectionManager gearSelectionManager;
 
     private Vector2 startPos;
     private Vector3 startScale;
@@ -105,5 +106,6 @@ public class SceneFlowController : MonoBehaviour
         // Start the next step, safety gear
         dialogueController.OnNextClicked2(Instance.selectedCharacter);
     }
+
 }
 

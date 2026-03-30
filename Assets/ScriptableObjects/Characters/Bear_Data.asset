@@ -21,4 +21,4 @@ MonoBehaviour:
   displaySize: {x: 350, y: 600}
   displayPosition: {x: -240, y: -240}
   speechBubbleAnchoredPosition: {x: -100, y: 150}
-  inspectionScale: 1.1
+  inspectionScale: 0.8

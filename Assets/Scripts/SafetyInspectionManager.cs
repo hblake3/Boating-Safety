@@ -12,19 +12,19 @@ public class SafetyInspectionManager : MonoBehaviour
 
     [Header("Buddy Steps")]
     [SerializeField] private GameObject buddyStrapStep;
-    [SerializeField] private GameObject buddyChinStep;
+    [SerializeField] private GameObject buddyEarStep;
 
     [Header("Barry Steps")]
     [SerializeField] private GameObject barryStrapStep;
-    [SerializeField] private GameObject barryChinStep;
+    [SerializeField] private GameObject barryEarStep;
 
     public SceneFlowController sceneFlowController;
 
-    // Determine the current step of the inspection (straps vs chin) to know what dialogue to show
+    // Determine the current step of the inspection (straps vs ear) to know what dialogue to show
     public enum InspectionStep
     {
         Straps,
-        Chin
+        Ear
     }
     public InspectionStep currentStep;
 
@@ -33,11 +33,15 @@ public class SafetyInspectionManager : MonoBehaviour
     {
         "Uh oh, that doesn't look right. Try again.",
         "Not quite! Look for the straps that should be snug around my body.",
+        "Hmm, that star isn't in the right spot. Remember, the straps should be tight and snug around my body!",
+        "That's not it! Try looking a little closer at my body and finding the straps that should be snug around me.",
     };
-    List<string> wrongChinResponses = new List<string>()
+    List<string> wrongEarResponses = new List<string>()
     {
         "That's not it! Try looking a little higher.",
         "Hmm, that doesn't look quite right. Try again!",
+        "Not quite!",
+        "Uh oh, that star isn't in the right spot. Remember, the life jacket should NOT be above my ears when I lift my arms up!"
     };
 
 
@@ -50,14 +54,14 @@ public class SafetyInspectionManager : MonoBehaviour
         speechBubble.GetComponent<RectTransform>().anchoredPosition = new Vector2(510, 630);
         speechBubble.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
 
-        // Ensure the dialogue text is also rotated back to (0,0,0) in case it was flipped during the chin step
+        // Ensure the dialogue text is also rotated back to (0,0,0) in case it was flipped during the ear step
         dialogueText.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
 
         // Start with all hotspots and next button disabled until the inspection is triggered
         buddyStrapStep.SetActive(false);
-        buddyChinStep.SetActive(false);
+        buddyEarStep.SetActive(false);
         barryStrapStep.SetActive(false);
-        barryChinStep.SetActive(false);
+        barryEarStep.SetActive(false);
 
         nextArrowButton.gameObject.SetActive(false);
 
@@ -72,9 +76,9 @@ public class SafetyInspectionManager : MonoBehaviour
         {
             dialogueText.text = wrongStrapResponses[Random.Range(0, wrongStrapResponses.Count)];
         }
-        else if (currentStep == InspectionStep.Chin)
+        else if (currentStep == InspectionStep.Ear)
         {
-            dialogueText.text = wrongChinResponses[Random.Range(0, wrongChinResponses.Count)];
+            dialogueText.text = wrongEarResponses[Random.Range(0, wrongEarResponses.Count)];
         }
 
         hotspot.ShowRedX();
@@ -88,10 +92,10 @@ public class SafetyInspectionManager : MonoBehaviour
             dialogueText.text =
             "Great job! Always make sure all straps on the lifejacket are tight and snug!";
         }
-        else if (currentStep == InspectionStep.Chin)
+        else if (currentStep == InspectionStep.Ear)
         {
             dialogueText.text =
-            "That's right! If the life jacket is above the chin, it's too big!";
+            "That's right! If the life jacket is above the ears, it's too big!";
         }
 
         nextArrowButton.gameObject.SetActive(true);
@@ -120,12 +124,12 @@ public class SafetyInspectionManager : MonoBehaviour
     {
         if (currentStep == InspectionStep.Straps)
         {
-            currentStep = InspectionStep.Chin;
+            currentStep = InspectionStep.Ear;
 
-            // trigger the next inspection question (chin)
+            // trigger the next inspection question (ear)
             nextArrowButton.gameObject.SetActive(false);
 
-            // Flip the speech bubble and move it down to the bottom of the screen for better visibility of the character's chin
+            // Flip the speech bubble and move it down to the bottom of the screen for better visibility of the character's ear
             speechBubble.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 180);
             speechBubble.GetComponent<RectTransform>().anchoredPosition = new Vector2(510, -200);
             // flip the dialogue text
@@ -134,33 +138,33 @@ public class SafetyInspectionManager : MonoBehaviour
             nextArrowButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-750, 60);
             nextArrowButton.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 180);
 
-            // Swap out hotspots and update dialogue for the chin strap step
+            // Swap out hotspots and update dialogue for the ear strap step
             if (GameManager.Instance.selectedCharacter.characterName == "Buddy the Beaver")
             {
                 buddyStrapStep.SetActive(false);
-                buddyChinStep.SetActive(true);
+                buddyEarStep.SetActive(true);
             }
             else
             {
                 barryStrapStep.SetActive(false);
-                barryChinStep.SetActive(true);
+                barryEarStep.SetActive(true);
             }
             dialogueText.text =
                     "Now let’s check if the life jacket really fits me!\r\n" +
                     "When I lift my arms up, the life jacket should NOT move above my…? ";
         }
-        else if (currentStep == InspectionStep.Chin)
+        else if (currentStep == InspectionStep.Ear)
         {
             // End the inspection and reset the UI
 
             speechBubble.SetActive(false);
             if (GameManager.Instance.selectedCharacter.characterName == "Buddy the Beaver")
             {
-                buddyChinStep.SetActive(false);
+                buddyEarStep.SetActive(false);
             }
             else
             {
-                barryChinStep.SetActive(false);
+                barryEarStep.SetActive(false);
             }
             dialogueText.text = "";
 
