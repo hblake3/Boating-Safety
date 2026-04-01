@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac50338b7b42194b9cd1933bb728308, type: 3}
+  m_Name: Beaver_Data
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterName: Buddy the Beaver
+  age: 6
+  weight: 70
+  requiredJacket: 2
+  fullBodySprite: {fileID: 5384494250188864148, guid: 7568f3baf2b6c9e4cab66b36484b900e, type: 3}
+  portraitSprite: {fileID: -2101692748250844667, guid: 9b8a65d0069d078488a5e27d853c9da5, type: 3}
+  displaySize: {x: 300, y: 400}
+  displayPosition: {x: -240, y: -240}
+  speechBubbleAnchoredPosition: {x: -140, y: 30}
+  inspectionScale: 1.8

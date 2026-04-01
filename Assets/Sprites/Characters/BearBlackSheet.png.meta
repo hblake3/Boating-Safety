@@ -1,0 +1,2613 @@
+fileFormatVersion: 2
+guid: 61c158b1921920e4e98b27f29efd9d0e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1478789428813080947
+    second: BearBlackSheet_0
+  - first:
+      213: -2029188915905628942
+    second: BearBlackSheet_1
+  - first:
+      213: -5304405511600721039
+    second: BearBlackSheet_2
+  - first:
+      213: -6967204131968794117
+    second: BearBlackSheet_3
+  - first:
+      213: 3205947094725399280
+    second: BearBlackSheet_4
+  - first:
+      213: -2538929686314972251
+    second: BearBlackSheet_5
+  - first:
+      213: 3918918791675495612
+    second: BearBlackSheet_6
+  - first:
+      213: 845427722493278381
+    second: BearBlackSheet_7
+  - first:
+      213: -4451303288110471780
+    second: BearBlackSheet_8
+  - first:
+      213: 3884307374733059639
+    second: BearBlackSheet_9
+  - first:
+      213: -1386828246375783980
+    second: BearBlackSheet_10
+  - first:
+      213: 2108468131649729859
+    second: BearBlackSheet_11
+  - first:
+      213: -8833690290153868823
+    second: BearBlackSheet_12
+  - first:
+      213: 8342904408402456297
+    second: BearBlackSheet_13
+  - first:
+      213: 390408532168632445
+    second: BearBlackSheet_14
+  - first:
+      213: 1502178163521155219
+    second: BearBlackSheet_15
+  - first:
+      213: -1942736240033534235
+    second: BearBlackSheet_16
+  - first:
+      213: -6219037509001285549
+    second: BearBlackSheet_17
+  - first:
+      213: -1505408912978049650
+    second: BearBlackSheet_18
+  - first:
+      213: 1250020140762446926
+    second: BearBlackSheet_19
+  - first:
+      213: 4973260149785780091
+    second: BearBlackSheet_20
+  - first:
+      213: -2684792851109058227
+    second: BearBlackSheet_21
+  - first:
+      213: -2772495539085371654
+    second: BearBlackSheet_22
+  - first:
+      213: -5356807757132723140
+    second: BearBlackSheet_23
+  - first:
+      213: 1097070381447595079
+    second: BearBlackSheet_24
+  - first:
+      213: -4899717529613075367
+    second: BearBlackSheet_25
+  - first:
+      213: 6598776478527570160
+    second: BearBlackSheet_26
+  - first:
+      213: 8505116173482975909
+    second: BearBlackSheet_27
+  - first:
+      213: 4923950294852262760
+    second: BearBlackSheet_28
+  - first:
+      213: 1654802815499152587
+    second: BearBlackSheet_29
+  - first:
+      213: -763205310820101914
+    second: BearBlackSheet_30
+  - first:
+      213: 6479836742974794862
+    second: BearBlackSheet_31
+  - first:
+      213: 9034867103099608160
+    second: BearBlackSheet_32
+  - first:
+      213: 5821725665028908850
+    second: BearBlackSheet_33
+  - first:
+      213: 6673587800724131799
+    second: BearBlackSheet_34
+  - first:
+      213: -2556016221674101084
+    second: BearBlackSheet_35
+  - first:
+      213: 2124949115063862165
+    second: BearBlackSheet_36
+  - first:
+      213: -5285083253540145379
+    second: BearBlackSheet_37
+  - first:
+      213: 5751133296308657795
+    second: BearBlackSheet_38
+  - first:
+      213: 1545743874340007502
+    second: BearBlackSheet_39
+  - first:
+      213: -3669052733582905917
+    second: BearBlackSheet_40
+  - first:
+      213: 1787604568600003207
+    second: BearBlackSheet_41
+  - first:
+      213: 4749285118782270454
+    second: BearBlackSheet_42
+  - first:
+      213: 2103348910601736309
+    second: BearBlackSheet_43
+  - first:
+      213: 6096436455379139162
+    second: BearBlackSheet_44
+  - first:
+      213: -2346996391654098073
+    second: BearBlackSheet_45
+  - first:
+      213: -3931056088121576715
+    second: BearBlackSheet_46
+  - first:
+      213: -7396344125835692645
+    second: BearBlackSheet_47
+  - first:
+      213: -9211551490188883476
+    second: BearBlackSheet_48
+  - first:
+      213: 846846025171368632
+    second: BearBlackSheet_49
+  - first:
+      213: 5405877989255702485
+    second: BearBlackSheet_50
+  - first:
+      213: 8263237635630339441
+    second: BearBlackSheet_51
+  - first:
+      213: -2903812993871851295
+    second: BearBlackSheet_52
+  - first:
+      213: 4470914490357879271
+    second: BearBlackSheet_53
+  - first:
+      213: -316266231623328404
+    second: BearBlackSheet_54
+  - first:
+      213: -551641267563597687
+    second: BearBlackSheet_55
+  - first:
+      213: -2332767773516437576
+    second: BearBlackSheet_56
+  - first:
+      213: 816232920371491413
+    second: BearBlackSheet_57
+  - first:
+      213: -840216968866410716
+    second: BearBlackSheet_58
+  - first:
+      213: 5578334306056410002
+    second: BearBlackSheet_59
+  - first:
+      213: -4083559752915089130
+    second: BearBlackSheet_60
+  - first:
+      213: -6034388945241456213
+    second: BearBlackSheet_61
+  - first:
+      213: 1212360414778515971
+    second: BearBlackSheet_62
+  - first:
+      213: 2089888340763758458
+    second: BearBlackSheet_63
+  - first:
+      213: -5387161742968561202
+    second: BearBlackSheet_64
+  - first:
+      213: 6400270375483080245
+    second: BearBlackSheet_65
+  - first:
+      213: -1606574602122476073
+    second: BearBlackSheet_66
+  - first:
+      213: -4179374725918330827
+    second: BearBlackSheet_67
+  - first:
+      213: -5511119752112158763
+    second: BearBlackSheet_68
+  - first:
+      213: 1582099930497592675
+    second: BearBlackSheet_69
+  - first:
+      213: 1775803353344118643
+    second: BearBlackSheet_70
+  - first:
+      213: 3837859900796357342
+    second: BearBlackSheet_71
+  - first:
+      213: -7668862783600576182
+    second: BearBlackSheet_72
+  - first:
+      213: 2305457209405158044
+    second: BearBlackSheet_73
+  - first:
+      213: 6406417243681687028
+    second: BearBlackSheet_74
+  - first:
+      213: 4984180679532318361
+    second: BearBlackSheet_75
+  - first:
+      213: -9032911212281815405
+    second: BearBlackSheet_76
+  - first:
+      213: -7067798698661248236
+    second: BearBlackSheet_77
+  - first:
+      213: -7539343688802121121
+    second: BearBlackSheet_78
+  - first:
+      213: -7086934038925214622
+    second: BearBlackSheet_79
+  - first:
+      213: -4442839398331272155
+    second: BearBlackSheet_80
+  - first:
+      213: -3189586432829959366
+    second: BearBlackSheet_81
+  - first:
+      213: -5412329231515998582
+    second: BearBlackSheet_82
+  - first:
+      213: 9177654070029801801
+    second: BearBlackSheet_83
+  - first:
+      213: 2537481260807457951
+    second: BearBlackSheet_84
+  - first:
+      213: -5712163693691597224
+    second: BearBlackSheet_85
+  - first:
+      213: 442748347080465158
+    second: BearBlackSheet_86
+  - first:
+      213: -3748323834466352013
+    second: BearBlackSheet_87
+  - first:
+      213: 5885212025728744479
+    second: BearBlackSheet_88
+  - first:
+      213: -2668056904075357887
+    second: BearBlackSheet_89
+  - first:
+      213: 8208734974582267941
+    second: BearBlackSheet_90
+  - first:
+      213: 8144923492650648806
+    second: BearBlackSheet_91
+  - first:
+      213: 5587876045369328845
+    second: BearBlackSheet_92
+  - first:
+      213: 7459618661061902026
+    second: BearBlackSheet_93
+  - first:
+      213: 5767560926329790073
+    second: BearBlackSheet_94
+  - first:
+      213: 1768181461504486900
+    second: BearBlackSheet_95
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BearBlackSheet_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 66
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 379a10a8627b58410800000000000000
+      internalID: 1478789428813080947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 66
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f4f84d9e6fd6d3e0800000000000000
+      internalID: -2029188915905628942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 66
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1733a688a47f266b0800000000000000
+      internalID: -5304405511600721039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_3
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 66
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf1cd5c71c48f4f90800000000000000
+      internalID: -6967204131968794117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_4
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 66
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f29dc595efcd7c20800000000000000
+      internalID: 3205947094725399280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_5
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 66
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ab8081f6e8e3ccd0800000000000000
+      internalID: -2538929686314972251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_6
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 66
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb4cb61b0ebc26630800000000000000
+      internalID: 3918918791675495612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_7
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 66
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da8ba7ac8009bbb00800000000000000
+      internalID: 845427722493278381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_8
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c95a5a45e3bc932c0800000000000000
+      internalID: -4451303288110471780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_9
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 66
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 736e4653af4d7e530800000000000000
+      internalID: 3884307374733059639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_10
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 66
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d12b42ce0ff0cce0800000000000000
+      internalID: -1386828246375783980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_11
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 345b6373898c24d10800000000000000
+      internalID: 2108468131649729859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_12
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e1bf87eb7d686580800000000000000
+      internalID: -8833690290153868823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_13
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ee6ed95b53f7c370800000000000000
+      internalID: 8342904408402456297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_14
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d786135dd720b6500800000000000000
+      internalID: 390408532168632445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_15
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 390f602b41fc8d410800000000000000
+      internalID: 1502178163521155219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_16
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 66
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eee588cea30a05e0800000000000000
+      internalID: -1942736240033534235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_17
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 66
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 350f52fd55a81b9a0800000000000000
+      internalID: -6219037509001285549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_18
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 66
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e858c34d196bb1be0800000000000000
+      internalID: -1505408912978049650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_19
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 66
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4cba34f1b6f85110800000000000000
+      internalID: 1250020140762446926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_20
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7f569bb1c1940540800000000000000
+      internalID: 4973260149785780091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_21
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d49e2266023bdbad0800000000000000
+      internalID: -2684792851109058227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_22
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af6167b1ffd1689d0800000000000000
+      internalID: -2772495539085371654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_23
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3c0c0af9bbc8a5b0800000000000000
+      internalID: -5356807757132723140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_24
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74449cb03b3993f00800000000000000
+      internalID: 1097070381447595079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_25
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 66
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95c78abddd4b00cb0800000000000000
+      internalID: -4899717529613075367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_26
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 66
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0c6d2de30939b50800000000000000
+      internalID: 6598776478527570160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_27
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 66
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a2e1e5091e380670800000000000000
+      internalID: 8505116173482975909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_28
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 66
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86b595874b2655440800000000000000
+      internalID: 4923950294852262760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_29
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 66
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcca427a46a07f610800000000000000
+      internalID: 1654802815499152587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_30
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 66
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e050ed30dc8865f0800000000000000
+      internalID: -763205310820101914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_31
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 66
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6c6983af210de950800000000000000
+      internalID: 6479836742974794862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_32
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 34
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06c5d11f2cb426d70800000000000000
+      internalID: 9034867103099608160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_33
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 34
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 237a2d3c5aceac050800000000000000
+      internalID: 5821725665028908850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_34
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 34
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dfca8f1fb85d9c50800000000000000
+      internalID: 6673587800724131799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_35
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 34
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a6aafae9c4378cd0800000000000000
+      internalID: -2556016221674101084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_36
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 34
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 593892136f55d7d10800000000000000
+      internalID: 2124949115063862165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_37
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 35
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d17bf5058cc97a6b0800000000000000
+      internalID: -5285083253540145379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_38
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 34
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38e166e134120df40800000000000000
+      internalID: 5751133296308657795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_39
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 34
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4ea5cf2dd5937510800000000000000
+      internalID: 1545743874340007502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_40
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 34
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cd6d907af7e41dc0800000000000000
+      internalID: -3669052733582905917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_41
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 35
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 782c44e42e8dec810800000000000000
+      internalID: 1787604568600003207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_42
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 35
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fbe01a17a9d8e140800000000000000
+      internalID: 4749285118782270454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_43
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 34
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5701f1fa0b8903d10800000000000000
+      internalID: 2103348910601736309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_44
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 34
+        width: 13
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a7d96e7a4ea9450800000000000000
+      internalID: 6096436455379139162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_45
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 34
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76b755a773bcd6fd0800000000000000
+      internalID: -2346996391654098073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_46
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 34
+        width: 13
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f27063c0551279c0800000000000000
+      internalID: -3931056088121576715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_47
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 34
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b95340f7438ea5990800000000000000
+      internalID: -7396344125835692645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_48
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 34
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce9421d79bef92080800000000000000
+      internalID: -9211551490188883476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_49
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 34
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ba7acd19f990cb00800000000000000
+      internalID: 846846025171368632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_50
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 34
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d760b0c369850b40800000000000000
+      internalID: 5405877989255702485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_51
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 34
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 175926e59daeca270800000000000000
+      internalID: 8263237635630339441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_52
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 34
+        width: 13
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e0da16977593b7d0800000000000000
+      internalID: -2903812993871851295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_53
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 34
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e19de28a01eb0e30800000000000000
+      internalID: 4470914490357879271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_54
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 34
+        width: 13
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6dd3a9b9856c9bf0800000000000000
+      internalID: -316266231623328404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_55
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 34
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 980fc6b903d2858f0800000000000000
+      internalID: -551641267563597687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_56
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 34
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b7e21cc11850afd0800000000000000
+      internalID: -2332767773516437576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_57
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 35
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 552f8b83487d35b00800000000000000
+      internalID: 816232920371491413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_58
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 35
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42f46745e13f654f0800000000000000
+      internalID: -840216968866410716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_59
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 34
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2931edefe793a6d40800000000000000
+      internalID: 5578334306056410002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_60
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 34
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6190a645a084457c0800000000000000
+      internalID: -4083559752915089130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_61
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 35
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba1c652d93b814ca0800000000000000
+      internalID: -6034388945241456213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_62
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 34
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3026e96bf5b23d010800000000000000
+      internalID: 1212360414778515971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_63
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 34
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7f447b8f56c00d10800000000000000
+      internalID: 2089888340763758458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_64
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec1e8caefe4fc35b0800000000000000
+      internalID: -5387161742968561202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_65
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 2
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53eff151ff352d850800000000000000
+      internalID: 6400270375483080245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_66
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 3
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d5435f49ec44b9e0800000000000000
+      internalID: -1606574602122476073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_67
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 2
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 530746e74d0eff5c0800000000000000
+      internalID: -4179374725918330827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_68
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 3
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d747bcd8c19483b0800000000000000
+      internalID: -5511119752112158763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_69
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 2
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36daa74218fb4f510800000000000000
+      internalID: 1582099930497592675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_70
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 2
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37f0603cdbbe4a810800000000000000
+      internalID: 1775803353344118643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_71
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 2
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edacea4fe31d24530800000000000000
+      internalID: 3837859900796357342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_72
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 2
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4936400ee9b29590800000000000000
+      internalID: -7668862783600576182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_73
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 2
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c92357bfd11aeff10800000000000000
+      internalID: 2305457209405158044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_74
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 2
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f5859c5a8a28e850800000000000000
+      internalID: 6406417243681687028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_75
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 2
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99e83e3bbed5b2540800000000000000
+      internalID: 4984180679532318361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_76
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 2
+        width: 13
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39e9c406c17a4a280800000000000000
+      internalID: -9032911212281815405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_77
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 2
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4130456c7822aed90800000000000000
+      internalID: -7067798698661248236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_78
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 2
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5acd553cdede5790800000000000000
+      internalID: -7539343688802121121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_79
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 2
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26cfc3f2a0726ad90800000000000000
+      internalID: -7086934038925214622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_80
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 2
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 524ba5c3b1dd752c0800000000000000
+      internalID: -4442839398331272155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_81
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 2
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a33d3cad9005cb3d0800000000000000
+      internalID: -3189586432829959366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_82
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 2
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a86a60c5d3b83e4b0800000000000000
+      internalID: -5412329231515998582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_83
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 2
+        width: 18
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9495b8b50c39d5f70800000000000000
+      internalID: 9177654070029801801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_84
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 2
+        width: 13
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9c83a633c1f63320800000000000000
+      internalID: 2537481260807457951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_85
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 2
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85e01aa82615ab0b0800000000000000
+      internalID: -5712163693691597224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_86
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 2
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60b5f90a645f42600800000000000000
+      internalID: 442748347080465158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_87
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 2
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 374c08ff4574bfbc0800000000000000
+      internalID: -3748323834466352013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_88
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 2
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1c3b6df7297ca150800000000000000
+      internalID: 5885212025728744479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_89
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 2
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1415f08b16829fad0800000000000000
+      internalID: -2668056904075357887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_90
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 2
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5202d47b7f84be170800000000000000
+      internalID: 8208734974582267941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_91
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 2
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e40d2e43c4980170800000000000000
+      internalID: 8144923492650648806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_92
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 3
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc4472d48af1c8d40800000000000000
+      internalID: 5587876045369328845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_93
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 2
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ace387446a3e58760800000000000000
+      internalID: 7459618661061902026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_94
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 2
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97e5f4aca1e7a0050800000000000000
+      internalID: 5767560926329790073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearBlackSheet_95
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 2
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fde767cba7d98810800000000000000
+      internalID: 1768181461504486900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BearBlackSheet_0: 1478789428813080947
+      BearBlackSheet_1: -2029188915905628942
+      BearBlackSheet_10: -1386828246375783980
+      BearBlackSheet_11: 2108468131649729859
+      BearBlackSheet_12: -8833690290153868823
+      BearBlackSheet_13: 8342904408402456297
+      BearBlackSheet_14: 390408532168632445
+      BearBlackSheet_15: 1502178163521155219
+      BearBlackSheet_16: -1942736240033534235
+      BearBlackSheet_17: -6219037509001285549
+      BearBlackSheet_18: -1505408912978049650
+      BearBlackSheet_19: 1250020140762446926
+      BearBlackSheet_2: -5304405511600721039
+      BearBlackSheet_20: 4973260149785780091
+      BearBlackSheet_21: -2684792851109058227
+      BearBlackSheet_22: -2772495539085371654
+      BearBlackSheet_23: -5356807757132723140
+      BearBlackSheet_24: 1097070381447595079
+      BearBlackSheet_25: -4899717529613075367
+      BearBlackSheet_26: 6598776478527570160
+      BearBlackSheet_27: 8505116173482975909
+      BearBlackSheet_28: 4923950294852262760
+      BearBlackSheet_29: 1654802815499152587
+      BearBlackSheet_3: -6967204131968794117
+      BearBlackSheet_30: -763205310820101914
+      BearBlackSheet_31: 6479836742974794862
+      BearBlackSheet_32: 9034867103099608160
+      BearBlackSheet_33: 5821725665028908850
+      BearBlackSheet_34: 6673587800724131799
+      BearBlackSheet_35: -2556016221674101084
+      BearBlackSheet_36: 2124949115063862165
+      BearBlackSheet_37: -5285083253540145379
+      BearBlackSheet_38: 5751133296308657795
+      BearBlackSheet_39: 1545743874340007502
+      BearBlackSheet_4: 3205947094725399280
+      BearBlackSheet_40: -3669052733582905917
+      BearBlackSheet_41: 1787604568600003207
+      BearBlackSheet_42: 4749285118782270454
+      BearBlackSheet_43: 2103348910601736309
+      BearBlackSheet_44: 6096436455379139162
+      BearBlackSheet_45: -2346996391654098073
+      BearBlackSheet_46: -3931056088121576715
+      BearBlackSheet_47: -7396344125835692645
+      BearBlackSheet_48: -9211551490188883476
+      BearBlackSheet_49: 846846025171368632
+      BearBlackSheet_5: -2538929686314972251
+      BearBlackSheet_50: 5405877989255702485
+      BearBlackSheet_51: 8263237635630339441
+      BearBlackSheet_52: -2903812993871851295
+      BearBlackSheet_53: 4470914490357879271
+      BearBlackSheet_54: -316266231623328404
+      BearBlackSheet_55: -551641267563597687
+      BearBlackSheet_56: -2332767773516437576
+      BearBlackSheet_57: 816232920371491413
+      BearBlackSheet_58: -840216968866410716
+      BearBlackSheet_59: 5578334306056410002
+      BearBlackSheet_6: 3918918791675495612
+      BearBlackSheet_60: -4083559752915089130
+      BearBlackSheet_61: -6034388945241456213
+      BearBlackSheet_62: 1212360414778515971
+      BearBlackSheet_63: 2089888340763758458
+      BearBlackSheet_64: -5387161742968561202
+      BearBlackSheet_65: 6400270375483080245
+      BearBlackSheet_66: -1606574602122476073
+      BearBlackSheet_67: -4179374725918330827
+      BearBlackSheet_68: -5511119752112158763
+      BearBlackSheet_69: 1582099930497592675
+      BearBlackSheet_7: 845427722493278381
+      BearBlackSheet_70: 1775803353344118643
+      BearBlackSheet_71: 3837859900796357342
+      BearBlackSheet_72: -7668862783600576182
+      BearBlackSheet_73: 2305457209405158044
+      BearBlackSheet_74: 6406417243681687028
+      BearBlackSheet_75: 4984180679532318361
+      BearBlackSheet_76: -9032911212281815405
+      BearBlackSheet_77: -7067798698661248236
+      BearBlackSheet_78: -7539343688802121121
+      BearBlackSheet_79: -7086934038925214622
+      BearBlackSheet_8: -4451303288110471780
+      BearBlackSheet_80: -4442839398331272155
+      BearBlackSheet_81: -3189586432829959366
+      BearBlackSheet_82: -5412329231515998582
+      BearBlackSheet_83: 9177654070029801801
+      BearBlackSheet_84: 2537481260807457951
+      BearBlackSheet_85: -5712163693691597224
+      BearBlackSheet_86: 442748347080465158
+      BearBlackSheet_87: -3748323834466352013
+      BearBlackSheet_88: 5885212025728744479
+      BearBlackSheet_89: -2668056904075357887
+      BearBlackSheet_9: 3884307374733059639
+      BearBlackSheet_90: 8208734974582267941
+      BearBlackSheet_91: 8144923492650648806
+      BearBlackSheet_92: 5587876045369328845
+      BearBlackSheet_93: 7459618661061902026
+      BearBlackSheet_94: 5767560926329790073
+      BearBlackSheet_95: 1768181461504486900
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

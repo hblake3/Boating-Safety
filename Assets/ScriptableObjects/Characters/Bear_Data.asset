@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac50338b7b42194b9cd1933bb728308, type: 3}
+  m_Name: Bear_Data
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterName: Barry the Bear
+  age: 20
+  weight: 160
+  requiredJacket: 1
+  fullBodySprite: {fileID: 2991444856419353188, guid: 2cecaaaa55d4817498fb15095b568f72, type: 3}
+  portraitSprite: {fileID: 2875017675683147292, guid: 96fc379f940127d4e8728b2d19c29dd5, type: 3}
+  displaySize: {x: 350, y: 600}
+  displayPosition: {x: -240, y: -240}
+  speechBubbleAnchoredPosition: {x: -100, y: 150}
+  inspectionScale: 1.1

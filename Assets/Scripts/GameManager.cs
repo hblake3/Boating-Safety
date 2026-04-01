@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public CharacterData selectedCharacter;
-    //public LifeJacketType requiredJacket;
+    public LifeJacketType requiredJacket;
+    public LifeJacketData selectedJacket;
 
     void Awake()
     {

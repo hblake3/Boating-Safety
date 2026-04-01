@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453958d7644219c47ad0e7731b89e2f4, type: 3}
+  m_Name: Child
+  m_EditorClassIdentifier: Assembly-CSharp::LifeJacketData
+  jacketName: Child Jacket
+  jacketType: 2
+  displaySprite: {fileID: 7382890309489937327, guid: 38fe8995452c64a4f9fac077c3756814, type: 3}
+  description: A child size life jacket that can hold 30 to 90 lbs.
+  fullbodysprite: {fileID: 4787324660083445629, guid: a8372853cb124a24f8473ccb720ca3b9, type: 3}
