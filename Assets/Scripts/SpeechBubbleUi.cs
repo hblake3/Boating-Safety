@@ -8,14 +8,14 @@ public class SpeechBubbleUI : MonoBehaviour
     public TextMeshProUGUI bubbleText;
     public FeedbackPopupUI feedbackPopup;
     public Button nextButton;
+    public Button nextButton2;
+    public Button nextButton3;
     public SceneFlowController sceneFlowController;
+    public GearSelectionManager gearSelectionManager;
 
     void Start()
     {
         Hide();
-        // disable speech bubble's next button until needed
-        nextButton.gameObject.SetActive(false);
-
     }
 
     // Shows the speech bubble with specified text at a position offset from the character's position
@@ -29,23 +29,47 @@ public class SpeechBubbleUI : MonoBehaviour
 
     public void Hide()
     {
+        nextButton.interactable = false;
+        nextButton.gameObject.SetActive(false);
+        nextButton2.interactable = false;
+        nextButton2.gameObject.SetActive(false);
+        nextButton3.interactable = false;
+        nextButton3.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 
     public void ShowNextButton()
     {
         nextButton.gameObject.SetActive(true);
+        nextButton.interactable = true;
     }
 
     public void StartInspection()
     {
-        Debug.Log("Starting inspection, zooming in...");
         Hide();
 
         // Trigger the zoom and transition in the SceneFlowController
         sceneFlowController.InspectionTransition();
-
     }
 
+    public void ShowNextButton2()
+    {
+        nextButton2.gameObject.SetActive(true);
+        nextButton2.interactable = true;
+    }
+
+    public void StartSafetyGear()
+    {
+        Hide();
+
+        // Start the gear selection process
+        gearSelectionManager.StartGearSelection();
+    }
+
+    public void ShowNextButton3()
+    {
+            nextButton3.gameObject.SetActive(true);
+            nextButton3.interactable = true;
+    }
 
 }

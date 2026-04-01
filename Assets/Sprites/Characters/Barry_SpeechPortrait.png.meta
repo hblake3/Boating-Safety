@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 228738b376ea8204088bd38cb992695d
+guid: b86171f5d3cb43f4d886f6c89b82c71b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5991265946835683046
-    second: SlimSlider_Blue_Scroller_0
+      213: 1888278410308708864
+    second: KSU SWE Caption Concept Art 05 B_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SlimSlider_Blue_Scroller_0
+      name: KSU SWE Caption Concept Art 05 B_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 135
-        height: 237
+        width: 1438
+        height: 1438
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e60904b2a0452350800000000000000
-      internalID: 5991265946835683046
+      spriteID: 00a6d7ba533843a10800000000000000
+      internalID: 1888278410308708864
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c97d1ee89259ed34f815673e00554d87
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SlimSlider_Blue_Scroller_0: 5991265946835683046
+      KSU SWE Caption Concept Art 05 B_0: 1888278410308708864
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -20,7 +20,6 @@ public class FeedbackPopupUI : MonoBehaviour
 
     public void ShowCorrect(string title, string body)
     {
-        Debug.Log("Showing correct feedback popup");
         gameObject.SetActive(true);
         titleText.text = title;
         bodyText.text = body;
@@ -32,7 +31,6 @@ public class FeedbackPopupUI : MonoBehaviour
 
     public void ShowIncorrect(string title, string body)
     {
-        Debug.Log("Showing incorrect feedback popup");
         gameObject.SetActive(true);
         titleText.text = title;
         bodyText.text = body;

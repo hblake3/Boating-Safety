@@ -41,7 +41,7 @@ public class LifeJacketSelectionUI : MonoBehaviour
     {
         var required = Instance.requiredJacket;
         var jacket = Instance.selectedJacket;
-        Debug.Log($"Required jacket: {required}, Selected jacket: {jacket.jacketType}");
+        //Debug.Log($"Required jacket: {required}, Selected jacket: {jacket.jacketType}");
         if (jacket.jacketType == required)
         {
             // Update character display image
