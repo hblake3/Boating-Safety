@@ -8,6 +8,7 @@ public class BoatCollision : MonoBehaviour
 
     [SerializeField] float invulnDuration = 1.2f;
     [SerializeField] float blinkInterval = 0.1f;
+    [SerializeField] string hurtTag = "CanHurtBoat";
 
     bool isInvulnerable;
     Coroutine invulnRoutine;
@@ -15,12 +16,16 @@ public class BoatCollision : MonoBehaviour
 
     void Awake()
     {
-        renderers = GetComponents<Renderer>();
+        renderers = GetComponentsInChildren<Renderer>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (isInvulnerable)
+            return;
+
+        // Only hazards with the CanHurtBoat tag should deal damage
+        if (!other.CompareTag(hurtTag))
             return;
 
         Debug.Log($"Boat hit {other.name}!");
@@ -61,6 +66,4 @@ public class BoatCollision : MonoBehaviour
         isInvulnerable = false;
         invulnRoutine = null;
     }
-
-
 }

@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private SpeechBubbleController speech;
     [SerializeField] private QuizController quiz;
     [SerializeField] private LogDodgeControllerNew logDodge;
+    [SerializeField] private NoWakeSegmentController noWakeSegment;
 
     private bool introDialogueDone = false;
     private bool navigationQuizDone = false;
@@ -15,6 +16,10 @@ public class GameController : MonoBehaviour
     private bool fogDialoguePart2Done = false;
     private bool fogQuizDone = false;
     private bool fogGameplayDone = false;
+
+    private bool noWakeDialogueDone = false;
+    private bool noWakeQuizDone = false;
+    private bool noWakeGameplayDone = false;
 
     public delegate void OnBoatingStarted();
     public static event OnBoatingStarted onBoatingStarted;
@@ -25,12 +30,35 @@ public class GameController : MonoBehaviour
     public delegate void OnStartFog();
     public static event OnStartFog onStartFog;
 
+    public delegate void OnClearFog();
+    public static event OnClearFog onClearFog;
+
+    // *** DEBUG STAGE SELECTION ***
+    [SerializeField] private bool useDebugStart = false;
+    [SerializeField] private DebugStartStage debugStartStage = DebugStartStage.NormalFlow;
+    public enum DebugStartStage
+    {
+        NormalFlow,
+        NavigationSpeech,
+        NavigationQuiz,
+        LogDodgeGameplay,
+        FogSpeech,
+        FogQuiz,
+        FogGameplay,
+        NoWakeSpeech,
+        NoWakeQuiz,
+        NoWakeGameplay
+    }
+
+
     private void OnEnable()
     {
         SpeechBubbleController.onDialogueFinished += HandleSpeech;
         QuizController.onQuizPassed += HandleQuizPassed;
         LogDodgeControllerNew.onLogDodgeComplete += HandleLogDodgeComplete;
         LogDodgeControllerNew.onLogDodgeFogComplete += HandleFogGameplayComplete;
+        FogController.onFogCleared += HandleFogCleared;
+        NoWakeSegmentController.onNoWakeSegmentComplete += HandleNoWakeGameplayComplete;
     }
 
     private void OnDisable()
@@ -39,16 +67,125 @@ public class GameController : MonoBehaviour
         QuizController.onQuizPassed -= HandleQuizPassed;
         LogDodgeControllerNew.onLogDodgeComplete -= HandleLogDodgeComplete;
         LogDodgeControllerNew.onLogDodgeFogComplete -= HandleFogGameplayComplete;
+        FogController.onFogCleared -= HandleFogCleared;
+        NoWakeSegmentController.onNoWakeSegmentComplete -= HandleNoWakeGameplayComplete;
     }
 
     private void Start()
     {
+        if (useDebugStart)
+        {
+            BeginAtStage(debugStartStage);
+            return;
+        }
+
         ShowIntroDialogue();
+    }
+
+    private void BeginAtStage(DebugStartStage stage)
+    {
+        ResetSegmentStateForDebug();
+
+        switch (stage)
+        {
+            case DebugStartStage.NormalFlow:
+            case DebugStartStage.NavigationSpeech:
+                ShowIntroDialogue();
+                break;
+
+            case DebugStartStage.NavigationQuiz:
+                introDialogueDone = true;
+                ShowNavigationQuiz();
+                break;
+
+            case DebugStartStage.LogDodgeGameplay:
+                introDialogueDone = true;
+                navigationQuizDone = true;
+                StartLogDodge();
+                break;
+
+            case DebugStartStage.FogSpeech:
+                introDialogueDone = true;
+                navigationQuizDone = true;
+                logDodgeDone = true;
+                ShowFogDialoguePart1();
+                break;
+
+            case DebugStartStage.FogQuiz:
+                introDialogueDone = true;
+                navigationQuizDone = true;
+                logDodgeDone = true;
+                fogDialoguePart1Done = true;
+                ShowFogQuiz();
+                break;
+
+            case DebugStartStage.FogGameplay:
+                introDialogueDone = true;
+                navigationQuizDone = true;
+                logDodgeDone = true;
+                fogDialoguePart1Done = true;
+                fogDialoguePart2Done = true;
+                onStartFog?.Invoke();
+                StartFogGameplay();
+                break;
+
+            case DebugStartStage.NoWakeSpeech:
+                introDialogueDone = true;
+                navigationQuizDone = true;
+                logDodgeDone = true;
+                fogDialoguePart1Done = true;
+                fogDialoguePart2Done = true;
+                fogQuizDone = true;
+                fogGameplayDone = true;
+                ShowNoWakeDialogue();
+                break;
+
+            case DebugStartStage.NoWakeQuiz:
+                introDialogueDone = true;
+                navigationQuizDone = true;
+                logDodgeDone = true;
+                fogDialoguePart1Done = true;
+                fogDialoguePart2Done = true;
+                fogQuizDone = true;
+                fogGameplayDone = true;
+                noWakeDialogueDone = true;
+                ShowNoWakeQuiz();
+                break;
+
+            case DebugStartStage.NoWakeGameplay:
+                introDialogueDone = true;
+                navigationQuizDone = true;
+                logDodgeDone = true;
+                fogDialoguePart1Done = true;
+                fogDialoguePart2Done = true;
+                fogQuizDone = true;
+                fogGameplayDone = true;
+                noWakeDialogueDone = true;
+                noWakeQuizDone = true;
+                StartNoWakeGameplay();
+                break;
+        }
+    }
+
+    private void ResetSegmentStateForDebug()
+    {
+        introDialogueDone = false;
+        navigationQuizDone = false;
+        logDodgeDone = false;
+        fogDialoguePart1Done = false;
+        fogDialoguePart2Done = false;
+        fogQuizDone = false;
+        fogGameplayDone = false;
+        noWakeDialogueDone = false;
+        noWakeQuizDone = false;
+        noWakeGameplayDone = false;
+
+        onBoatingStopped?.Invoke();
+        onClearFog?.Invoke(); // if you already added this event
     }
 
     private void HandleSpeech()
     {
-        // Intro dialogue finished -> show navigation quiz
         if (!introDialogueDone)
         {
             introDialogueDone = true;
@@ -56,7 +193,6 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        // Fog dialogue part 1 finished -> turn on fog, then continue speech
         if (logDodgeDone && !fogDialoguePart1Done)
         {
             fogDialoguePart1Done = true;
@@ -65,18 +201,23 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        // Fog dialogue part 2 finished -> show fog quiz
         if (fogDialoguePart1Done && !fogDialoguePart2Done)
         {
             fogDialoguePart2Done = true;
             ShowFogQuiz();
             return;
         }
+
+        if (fogGameplayDone && !noWakeDialogueDone)
+        {
+            noWakeDialogueDone = true;
+            ShowNoWakeQuiz();
+            return;
+        }
     }
 
     private void HandleQuizPassed()
     {
-        // Navigation quiz passed -> start first gameplay segment
         if (introDialogueDone && !navigationQuizDone)
         {
             navigationQuizDone = true;
@@ -84,11 +225,17 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        // Fog quiz passed -> start fog gameplay segment
         if (fogDialoguePart2Done && !fogQuizDone)
         {
             fogQuizDone = true;
             StartFogGameplay();
+            return;
+        }
+
+        if (noWakeDialogueDone && !noWakeQuizDone)
+        {
+            noWakeQuizDone = true;
+            StartNoWakeGameplay();
             return;
         }
     }
@@ -101,13 +248,26 @@ public class GameController : MonoBehaviour
         ShowFogDialoguePart1();
     }
 
+    private void HandleFogCleared()
+    {
+        ShowNoWakeDialogue();
+    }
+
     private void HandleFogGameplayComplete()
     {
         onBoatingStopped?.Invoke();
 
         fogGameplayDone = true;
 
-        // Later: clear fog and move to buoy speech/quiz/gameplay
+        onClearFog?.Invoke();
+    }
+
+    private void HandleNoWakeGameplayComplete()
+    {
+        onBoatingStopped?.Invoke();
+
+        noWakeGameplayDone = true;
+        ShowPostNoWakeDialogue();
     }
 
     private void ShowIntroDialogue()
@@ -194,5 +354,55 @@ public class GameController : MonoBehaviour
     {
         onBoatingStarted?.Invoke();
         logDodge.StartFogSegment();
+    }
+
+    private void ShowNoWakeDialogue()
+    {
+        speech.StartDialogue(new List<string>
+        {
+            "Nice work making it through the fog!",
+            "Up ahead is a \"No Wake\" zone.",
+            "What is a wake, you ask?",
+            "A \"wake\" is the waves and ripples a boat makes as it moves through the water.",
+            "Big wakes can rock other boats and make the water unsafe for everyone.",
+            "In a No Wake zone, you must drive slowly to avoid creating large wakes!",
+            "That way everyone can enjoy the lake safely together!"
+        });
+    }
+
+    private void ShowNoWakeQuiz()
+    {
+        QuizQuestionData question = new QuizQuestionData
+        {
+            question = "What should you do when you enter a No Wake zone?",
+            answers = new string[3]
+            {
+                "Go slowly so you don’t make big waves.",
+                "Drive fast to get through the No Wake zone quickly.",
+                "Go to sleep - it is a \"No Wake\" zone, afterall!"
+            },
+            correctAnswerIndex = 0,
+            correctFeedback = "Correct! In a No Wake zone you should drive slowly.",
+            incorrectFeedback = "Not quite. Try again!"
+        };
+
+        quiz.ShowQuiz(question);
+    }
+
+    private void StartNoWakeGameplay()
+    {
+        onBoatingStarted?.Invoke();
+        noWakeSegment.StartSegment();
+    }
+
+    private void ShowPostNoWakeDialogue()
+    {
+        speech.StartDialogue(new List<string>
+    {
+        "Nice work through the No Wake zone!",
+        "You slowed down and passed the docks safely.",
+        "Next, you'll learn about another important boating marker.",
+        "Let's keep going!"
+    });
     }
 }

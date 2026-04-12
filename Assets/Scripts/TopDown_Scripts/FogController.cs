@@ -6,8 +6,10 @@ public class FogController : MonoBehaviour
     [SerializeField] private SpriteRenderer fog1;
     [SerializeField] private SpriteRenderer fog2;
     [SerializeField] private SpriteRenderer fog3;
-
     [SerializeField] private float timeToFade = 1.5f;
+
+    public delegate void OnFogCleared();
+    public static event OnFogCleared onFogCleared;
 
     private void Start()
     {
@@ -21,11 +23,13 @@ public class FogController : MonoBehaviour
     private void OnEnable()
     {
         GameController.onStartFog += StartFog;
+        GameController.onClearFog += ClearFog;
     }
 
     private void OnDisable()
     {
         GameController.onStartFog -= StartFog;
+        GameController.onClearFog -= ClearFog;
     }
 
     private void StartFog()
@@ -38,6 +42,12 @@ public class FogController : MonoBehaviour
         StartCoroutine(FadeInFog());
     }
 
+    private void ClearFog()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeOutFog());
+    }
+
     private IEnumerator FadeInFog()
     {
         float elapsed = 0f;
@@ -45,14 +55,33 @@ public class FogController : MonoBehaviour
         while (elapsed < timeToFade)
         {
             elapsed += Time.deltaTime;
-
             float alpha = Mathf.Clamp01(elapsed / timeToFade);
             SetFogAlpha(alpha);
-
             yield return null;
         }
 
         SetFogAlpha(1f);
+    }
+
+    private IEnumerator FadeOutFog()
+    {
+        float elapsed = 0f;
+
+        while (elapsed < timeToFade)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = 1f - Mathf.Clamp01(elapsed / timeToFade);
+            SetFogAlpha(alpha);
+            yield return null;
+        }
+
+        SetFogAlpha(0f);
+
+        fog1.gameObject.SetActive(false);
+        fog2.gameObject.SetActive(false);
+        fog3.gameObject.SetActive(false);
+
+        onFogCleared?.Invoke();
     }
 
     private void SetFogAlpha(float alpha)
