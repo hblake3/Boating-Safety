@@ -17,12 +17,16 @@ public class UIController : MonoBehaviour
     [SerializeField] private Sprite twoStarSprite;
     [SerializeField] private Sprite threeStarSprite;
 
+    [Header("No Wake Warning")]
+    [SerializeField] private TextMeshProUGUI noWakeZoneSlowDownText;
+
     private void OnEnable()
     {
         BoatController.onSpeedChanged += UpdateSpeedUIText;
         ScoreController.onScoreChanged += UpdateScoreUIText;
         ScoreController.onStarsChanged += UpdateStarUI;
-        BoatCollision.onBoatHit += RunDecrementAnimation;
+        ScoreController.onScoreDecremented += RunDecrementAnimation;
+        ScoreController.onNoWakeViolationChanged += UpdateNoWakeWarning;
     }
 
     private void OnDisable()
@@ -30,7 +34,8 @@ public class UIController : MonoBehaviour
         BoatController.onSpeedChanged -= UpdateSpeedUIText;
         ScoreController.onScoreChanged -= UpdateScoreUIText;
         ScoreController.onStarsChanged -= UpdateStarUI;
-        BoatCollision.onBoatHit -= RunDecrementAnimation;
+        ScoreController.onScoreDecremented -= RunDecrementAnimation;
+        ScoreController.onNoWakeViolationChanged -= UpdateNoWakeWarning;
     }
 
     private void Start()
@@ -44,6 +49,12 @@ public class UIController : MonoBehaviour
                 cg = scoreDecrementText.gameObject.AddComponent<CanvasGroup>();
 
             cg.alpha = 1f;
+        }
+
+        if (noWakeZoneSlowDownText != null)
+        {
+            noWakeZoneSlowDownText.gameObject.SetActive(false);
+            noWakeZoneSlowDownText.rectTransform.localScale = Vector3.one;
         }
 
         UpdateStarUI(0);
@@ -91,7 +102,7 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private void RunDecrementAnimation()
+    private void RunDecrementAnimation(int amount)
     {
         if (scoreDecrementText == null) return;
 
@@ -99,12 +110,17 @@ public class UIController : MonoBehaviour
         if (cg == null)
             cg = scoreDecrementText.gameObject.AddComponent<CanvasGroup>();
 
+        LeanTween.cancel(scoreDecrementText.gameObject);
+        LeanTween.cancel(scoreDecrementText.rectTransform);
+
         cg.alpha = 1f;
         scoreDecrementText.gameObject.SetActive(true);
-        scoreDecrementText.text = ($"-{scoreController.scoreDecrementAmount.ToString()}");
+        scoreDecrementText.text = $"-{amount}";
 
         Vector3 startPos = scoreDecrementText.rectTransform.anchoredPosition;
         Vector3 endPos = startPos + new Vector3(0f, -40f, 0f);
+
+        scoreDecrementText.rectTransform.anchoredPosition = startPos;
 
         LeanTween.delayedCall(scoreDecrementText.gameObject, 0.15f, () =>
         {
@@ -119,5 +135,31 @@ public class UIController : MonoBehaviour
                          scoreDecrementText.gameObject.SetActive(false);
                      });
         });
+    }
+
+    private void UpdateNoWakeWarning(bool shouldShow)
+    {
+        if (noWakeZoneSlowDownText == null)
+            return;
+
+        RectTransform textRect = noWakeZoneSlowDownText.rectTransform;
+
+        LeanTween.cancel(noWakeZoneSlowDownText.gameObject);
+        LeanTween.cancel(textRect);
+
+        if (shouldShow)
+        {
+            noWakeZoneSlowDownText.gameObject.SetActive(true);
+            textRect.localScale = Vector3.one;
+
+            LeanTween.scale(textRect, Vector3.one * 1.15f, 0.7f)
+                     .setEaseInOutSine()
+                     .setLoopPingPong();
+        }
+        else
+        {
+            textRect.localScale = Vector3.one;
+            noWakeZoneSlowDownText.gameObject.SetActive(false);
+        }
     }
 }

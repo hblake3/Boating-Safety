@@ -15,6 +15,15 @@ public class ScoreController : MonoBehaviour
     private int starLevel2Threshold = 2000;
     private int starLevel3Threshold = 3000;
 
+    [SerializeField] private BoatController boatController;
+    [SerializeField] private int noWakePenaltyAmount = 25;
+
+    private bool noWakeRulesActive = false;
+    private Coroutine noWakePenaltyRoutine;
+    private float currentBoatSpeed;
+
+    private bool noWakeViolationActive = false;
+
     // [ DELEGATES ]
     public delegate void OnScoreChanged(int newScore);
     public static OnScoreChanged onScoreChanged;
@@ -22,18 +31,26 @@ public class ScoreController : MonoBehaviour
     public delegate void OnStarsChanged(int newStarCount);
     public static OnStarsChanged onStarsChanged;
 
+    public delegate void OnScoreDecremented(int amount);
+    public static OnScoreDecremented onScoreDecremented;
+
+    public delegate void OnNoWakeViolationChanged(bool isViolating);
+    public static OnNoWakeViolationChanged onNoWakeViolationChanged;
+
     private void OnEnable()
     {
         GameController.onBoatingStarted += HandleIncrementScoreOverTime;
         GameController.onBoatingStopped += HandleStopIncrementingScore;
-        BoatCollision.onBoatHit += DecrementScore;
+        BoatCollision.onBoatHit += DecrementScoreFromCollision;
+        BoatController.onSpeedChanged += CacheBoatSpeed;
     }
 
     private void OnDisable()
     {
         GameController.onBoatingStarted -= HandleIncrementScoreOverTime;
         GameController.onBoatingStopped -= HandleStopIncrementingScore;
-        BoatCollision.onBoatHit -= DecrementScore;
+        BoatCollision.onBoatHit -= DecrementScoreFromCollision;
+        BoatController.onSpeedChanged -= CacheBoatSpeed;
     }
 
     private void Start()
@@ -41,6 +58,7 @@ public class ScoreController : MonoBehaviour
         score = 0;
         currentStars = 0;
         scoreDecrementAmount = 50;
+        currentBoatSpeed = boatController.GetMoveSpeeds()[0];
 
         BroadcastScore();
         BroadcastStars();
@@ -48,6 +66,8 @@ public class ScoreController : MonoBehaviour
 
     private void HandleIncrementScoreOverTime()
     {
+        if (scoreIsIncrementing) return;
+
         scoreIsIncrementing = true;
         StartCoroutine(IncrementScoreOverTime());
     }
@@ -62,21 +82,41 @@ public class ScoreController : MonoBehaviour
         while (scoreIsIncrementing)
         {
             yield return new WaitForSeconds(0.25f);
+
+            if (noWakeRulesActive && !AtLowestSpeed())
+                continue;
+
             score += scoreIncrementAmount;
             BroadcastScore();
             UpdateStars();
         }
     }
 
-    private void DecrementScore()
+    private void DecrementScoreFromCollision()
     {
-        if (score >= scoreDecrementAmount)
-            score -= scoreDecrementAmount;
-        else
+        ApplyPenalty(scoreDecrementAmount);
+    }
+
+    private void CacheBoatSpeed(float newSpeed)
+    {
+        currentBoatSpeed = newSpeed;
+        UpdateNoWakeViolationState();
+    }
+
+
+    private void ApplyPenalty(int amount)
+    {
+        if (amount <= 0)
+            return;
+
+        score -= amount;
+
+        if (score < 0)
             score = 0;
 
         BroadcastScore();
         UpdateStars();
+        onScoreDecremented?.Invoke(amount);
     }
 
     private void UpdateStars()
@@ -138,5 +178,61 @@ public class ScoreController : MonoBehaviour
 
         BroadcastScore();
         UpdateStars();
+    }
+
+    public void StartNoWakeRules()
+    {
+        noWakeRulesActive = true;
+
+        if (noWakePenaltyRoutine != null)
+            StopCoroutine(noWakePenaltyRoutine);
+
+        UpdateNoWakeViolationState();
+        noWakePenaltyRoutine = StartCoroutine(NoWakePenaltyLoop());
+    }
+
+    public void StopNoWakeRules()
+    {
+        noWakeRulesActive = false;
+
+        if (noWakePenaltyRoutine != null)
+        {
+            StopCoroutine(noWakePenaltyRoutine);
+            noWakePenaltyRoutine = null;
+        }
+
+        UpdateNoWakeViolationState();
+    }
+
+    private IEnumerator NoWakePenaltyLoop()
+    {
+        while (noWakeRulesActive)
+        {
+            yield return new WaitForSeconds(1f);
+
+            if (!scoreIsIncrementing)
+                continue;
+
+            if (!AtLowestSpeed())
+            {
+                ApplyPenalty(noWakePenaltyAmount);
+            }
+        }
+    }
+
+    private bool AtLowestSpeed()
+    {
+        return Mathf.Approximately(currentBoatSpeed, boatController.GetMoveSpeeds()[0]);
+    }
+
+    private void UpdateNoWakeViolationState()
+    {
+        bool isViolating = noWakeRulesActive && !AtLowestSpeed();
+
+        if (isViolating == noWakeViolationActive)
+            return;
+
+        noWakeViolationActive = isViolating;
+        onNoWakeViolationChanged?.Invoke(noWakeViolationActive);
     }
 }
