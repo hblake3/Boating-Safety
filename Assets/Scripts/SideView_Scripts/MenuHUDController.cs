@@ -7,6 +7,8 @@ public class MenuHUDController : MonoBehaviour
     public GameObject dimBackground;
     public GameObject menuButton;
 
+    private CanvasGroup dimCanvasGroup;
+
     private Animator menuAnimator;
     private Animator dimAnimator;
 
@@ -17,6 +19,7 @@ public class MenuHUDController : MonoBehaviour
         menuButton.SetActive(true); 
         menuAnimator = menuPanel.GetComponent<Animator>();
         dimAnimator = dimBackground.GetComponent<Animator>();
+        dimCanvasGroup = dimBackground.GetComponent<CanvasGroup>();
     }
 
     public void ToggleMenu()
@@ -28,6 +31,8 @@ public class MenuHUDController : MonoBehaviour
         menuAnimator.Play("Menu_Open");
         dimAnimator.Play("Dim_FadeIn");
 
+        dimCanvasGroup.blocksRaycasts = true;
+
         menuButton.SetActive(false);
         // Pause or resume the game based on the menu state
         // Time.timeScale = isOpen ? 0f : 1f;
@@ -38,6 +43,8 @@ public class MenuHUDController : MonoBehaviour
         isOpen = false;
         menuAnimator.Play("Menu_Close");
         dimAnimator.Play("Dim_FadeOut");
+
+        dimCanvasGroup.blocksRaycasts = false;
 
         // Time.timeScale = 1f;
         menuButton.SetActive(true);

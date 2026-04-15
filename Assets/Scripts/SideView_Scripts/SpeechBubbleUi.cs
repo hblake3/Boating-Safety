@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class SpeechBubbleUI : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class SpeechBubbleUI : MonoBehaviour
     public Button nextButton3;
     public SceneFlowController sceneFlowController;
     public GearSelectionManager gearSelectionManager;
-
     void Start()
     {
         Hide();
@@ -70,6 +70,12 @@ public class SpeechBubbleUI : MonoBehaviour
     {
             nextButton3.gameObject.SetActive(true);
             nextButton3.interactable = true;
+    }
+
+    public void BeginTopDown()
+    {
+        SceneTransitionManager.Instance.TransitionToScene("TopDown");
+        Hide();
     }
 
 }

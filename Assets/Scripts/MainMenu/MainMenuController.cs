@@ -20,7 +20,8 @@ public class MainMenuController : MonoBehaviour
 
     public void OnOKPressed()
     {
-        StartCoroutine(LoadGame());
+        //StartCoroutine(LoadGame());
+        SceneTransitionManager.Instance.TransitionToScene("1");
     }
 
     IEnumerator FadeIn()
@@ -40,6 +41,6 @@ public class MainMenuController : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene(1);
+        SceneTransitionManager.Instance.TransitionToScene("1");
     }
 }
