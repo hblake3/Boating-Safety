@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.TextCore.Text;
@@ -219,11 +220,17 @@ public class GearSelectionManager : MonoBehaviour
             correctSelections++;
             feedbackText.text = GetPositiveFeedback(currentSelection.itemName);
             MarkItem(currentSelection, true);
+
+            //play correct sound effect
+            UIAudioManager.Instance.PlayCorrect();
         }
         else
         {
             feedbackText.text = GetNegativeFeedback();
             MarkItem(currentSelection, false);
+
+            //play incorrect sound effect
+            UIAudioManager.Instance.PlayError();
         }
 
         // Mark this item as chosen so it can't be selected again

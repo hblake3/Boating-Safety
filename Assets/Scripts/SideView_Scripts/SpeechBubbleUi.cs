@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SpeechBubbleUI : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class SpeechBubbleUI : MonoBehaviour
         bubbleRect.anchoredPosition = anchoredPosition;
         gameObject.SetActive(true);
 
+        UIAudioManager.Instance.PlayPop();
     }
 
     public void Hide()
@@ -68,14 +70,24 @@ public class SpeechBubbleUI : MonoBehaviour
 
     public void ShowNextButton3()
     {
-            nextButton3.gameObject.SetActive(true);
-            nextButton3.interactable = true;
+        nextButton3.gameObject.SetActive(true);
+        nextButton3.interactable = true;
     }
 
     public void BeginTopDown()
     {
-        SceneTransitionManager.Instance.TransitionToScene("TopDown");
-        Hide();
+        // Transition to the top-down scene with a fade effect
+        if (SceneTransitionManager.Instance != null)
+        {
+            SceneTransitionManager.Instance.TransitionToScene("TopDown");
+            Hide();
+        }
+        else // for debugging in the editor, just load the scene without transition
+        {
+            SceneManager.LoadScene("TopDown");
+             Hide();
+        }
+
     }
 
 }

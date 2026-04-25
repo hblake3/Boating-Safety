@@ -27,6 +27,8 @@ public class FeedbackPopupUI : MonoBehaviour
         nextButton.SetActive(true);
         tryAgainButton.SetActive(false);
 
+        // Play the correct answer sound effect
+        UIAudioManager.Instance.PlayCorrect();
     }
 
     public void ShowIncorrect(string title, string body)
@@ -37,6 +39,9 @@ public class FeedbackPopupUI : MonoBehaviour
 
         nextButton.SetActive(false);
         tryAgainButton.SetActive(true);
+
+        // Play the incorrect answer sound effect
+        UIAudioManager.Instance.PlayError();
 
     }
 

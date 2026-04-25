@@ -41,6 +41,9 @@ public class HoverScale : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         targetScale = originalScale * hoverScale;
+
+        // Play hover sound
+        UIAudioManager.Instance.PlayHover();
     }
 
     public void OnPointerExit(PointerEventData eventData)

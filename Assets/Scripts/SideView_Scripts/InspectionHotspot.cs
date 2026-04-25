@@ -29,11 +29,16 @@ public class InspectionHotspot : MonoBehaviour
         {
             manager.CorrectSelected(this);
             image.sprite = correctSprite;
+
+            // play correct sound effect
+            UIAudioManager.Instance.PlayCorrect();
         }
         else
         {
             manager.WrongSelected(this);
 
+            // play error sound effect
+            UIAudioManager.Instance.PlayError();
         }
     }
     public void DisableHotspot()
