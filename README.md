@@ -6,7 +6,7 @@ The project combines side-view and top-down gameplay, life jacket and boating it
 
 # Instructions to Run
 
-A browser-based playable build of the game is available here: [Click to Play!](https://play.unity.com/api/v1/games/game/2a23d4dc-a09c-440a-86fb-b5214e5a5d67/build/latest/frame)
+A browser-based playable build of the game is available here: [Click to Play!](https://play.unity.com/en/games/2a23d4dc-a09c-440a-86fb-b5214e5a5d67/boating-safety-web)
 
 ## Project Overview
 
