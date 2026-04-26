@@ -9,11 +9,11 @@ public class BoatController : MonoBehaviour
     [SerializeField] GameObject boatGO;
 
     [Header("Movement")]
-    public float xLimit = 5.5f; // the x-position boundaries the boat can move within
+    public float xLimit = 5.5f;
 
     [Header("Rotation")]
     public float rotationAngle = 30f;
-    public float rotationpeed = 6f;       // how fast it rotates
+    public float rotationpeed = 6f;
 
     [Header("Speed")]
     public float[] moveSpeeds = new float[] { 3.5f, 5f, 7.5f };
@@ -21,48 +21,43 @@ public class BoatController : MonoBehaviour
     public float moveSpeed;
     public static float CurrentSpeed { get; private set; }
 
-    // Trees, logs, etc, are controlled by the boats speed, but the boat itself moves too slowly.
-    // This isn't a clean solution, but we'll increase the boats speed via this modifier and leave everything else alone for now.
     public float boatSpeedMultiplier = 1.5f;
 
-
-    // input variables for keyboard and UI (buttons)
-    // -1 left, 1 right, 0 none
     private float input;
     private float keyboardInput;
     private float uiInput;
 
-    // to store the starting rotation of the boat
     private Quaternion baseRotation;
+
+    [Header("Control Lock")]
+    [SerializeField] private bool controlsLocked = false;
 
     // [ DELEGATES ]
     public delegate void OnSpeedChanged(float newSpeed);
     public static OnSpeedChanged onSpeedChanged;
 
-
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
-    }
-
     void Start()
     {
-        baseRotation = boatGO.transform.rotation; // set the default boat rotation at game start
-        moveSpeed = moveSpeeds[currentSpeedIndex]; // set the default starting speed at game start
+        baseRotation = boatGO.transform.rotation;
+        moveSpeed = moveSpeeds[currentSpeedIndex];
         CurrentSpeed = moveSpeed;
-        BroadcastSpeed(); // ensure the speed UI is updated to the default starting speed upon game start
+        BroadcastSpeed();
     }
 
     void Update()
     {
+        if (controlsLocked)
+        {
+            keyboardInput = 0f;
+            uiInput = 0f;
+            input = 0f;
+
+            HandleRotation();
+            return;
+        }
+
         ReadKeyboardInput();
 
-        // UI input overrides keyboard if present
         input = uiInput != 0f ? uiInput : keyboardInput;
 
         HandleMovement();
@@ -72,6 +67,24 @@ public class BoatController : MonoBehaviour
     public float[] GetMoveSpeeds()
     {
         return moveSpeeds;
+    }
+
+    public void LockControls()
+    {
+        controlsLocked = true;
+        keyboardInput = 0f;
+        uiInput = 0f;
+        input = 0f;
+    }
+
+    public void UnlockControls()
+    {
+        controlsLocked = false;
+    }
+
+    public bool AreControlsLocked()
+    {
+        return controlsLocked;
     }
 
     private void ReadKeyboardInput()
@@ -94,15 +107,10 @@ public class BoatController : MonoBehaviour
 
     private void HandleRotation()
     {
-        // If we're at the boundaries and still trying to move, cancel turning and return to base rotation
         bool pushingLeftIntoWall = (input < 0f && boatGO.transform.position.x <= -xLimit);
         bool pushingRightIntoWall = (input > 0f && boatGO.transform.position.x >= xLimit);
 
         float effectiveInput;
-
-        // If the boat is at the left boundary and the player is still pressing left
-        // or if the boat is at the right boundary and the player is still pressing right
-        // then cancel the input so the boat does not keep turning
 
         if ((pushingLeftIntoWall && input < 0f) ||
             (pushingRightIntoWall && input > 0f))
@@ -111,11 +119,9 @@ public class BoatController : MonoBehaviour
         }
         else
         {
-            // Otherwise, allow the input to affect rotation normally
             effectiveInput = input;
         }
 
-        // Rotate the boat axis
         Quaternion rotateOffset = Quaternion.AngleAxis(effectiveInput * rotationAngle, boatGO.transform.up);
         Quaternion targetRotation = rotateOffset * baseRotation;
 
@@ -124,12 +130,13 @@ public class BoatController : MonoBehaviour
 
     public void PressLeft()
     {
-        Debug.Log("Left Pressed");
+        if (controlsLocked) return;
         uiInput = -1f;
     }
 
     public void PressRight()
     {
+        if (controlsLocked) return;
         uiInput = 1f;
     }
 
@@ -140,11 +147,14 @@ public class BoatController : MonoBehaviour
 
     public void PressSpeedUp()
     {
-        if(currentSpeedIndex >= moveSpeeds.Length - 1)
+        if (controlsLocked) return;
+
+        if (currentSpeedIndex >= moveSpeeds.Length - 1)
         {
-            Debug.Log("Already at max speed!"); // ** TEST CAN GO HERE **
-            return; 
+            Debug.Log("Already at max speed!");
+            return;
         }
+
         currentSpeedIndex++;
         moveSpeed = moveSpeeds[currentSpeedIndex];
         BroadcastSpeed();
@@ -152,11 +162,14 @@ public class BoatController : MonoBehaviour
 
     public void PressSpeedDown()
     {
+        if (controlsLocked) return;
+
         if (currentSpeedIndex <= 0)
         {
-            Debug.Log("Already at min speed!"); // ** TEST CAN GO HERE **
+            Debug.Log("Already at min speed!");
             return;
         }
+
         currentSpeedIndex--;
         moveSpeed = moveSpeeds[currentSpeedIndex];
         BroadcastSpeed();
@@ -167,6 +180,4 @@ public class BoatController : MonoBehaviour
         CurrentSpeed = moveSpeed;
         onSpeedChanged?.Invoke(moveSpeed);
     }
-
-
 }

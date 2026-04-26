@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class NoWakeBuoyController : MonoBehaviour
 {
+    public delegate void OnBuoyExitedScreen(NoWakeBuoyController buoyController);
+    public static OnBuoyExitedScreen onBuoyExitedScreen;
+
     [SerializeField] private float despawnY = -10f;
 
     private float moveSpeed;
@@ -16,7 +19,6 @@ public class NoWakeBuoyController : MonoBehaviour
     private void OnEnable()
     {
         BoatController.onSpeedChanged += UpdateBuoySpeed;
-
         UpdateBuoySpeed(BoatController.CurrentSpeed);
     }
 
@@ -33,7 +35,9 @@ public class NoWakeBuoyController : MonoBehaviour
 
         if (transform.position.y <= despawnY)
         {
-            ResetBuoy();
+            active = false;
+            onBuoyExitedScreen?.Invoke(this);
+            gameObject.SetActive(false);
         }
     }
 

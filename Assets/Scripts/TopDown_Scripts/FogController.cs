@@ -51,16 +51,17 @@ public class FogController : MonoBehaviour
     private IEnumerator FadeInFog()
     {
         float elapsed = 0f;
+        float targetAlpha = 0.50f;
 
         while (elapsed < timeToFade)
         {
             elapsed += Time.deltaTime;
-            float alpha = Mathf.Clamp01(elapsed / timeToFade);
+            float alpha = Mathf.Clamp01(elapsed / timeToFade) * targetAlpha;
             SetFogAlpha(alpha);
             yield return null;
         }
 
-        SetFogAlpha(1f);
+        SetFogAlpha(targetAlpha);
     }
 
     private IEnumerator FadeOutFog()
@@ -70,7 +71,7 @@ public class FogController : MonoBehaviour
         while (elapsed < timeToFade)
         {
             elapsed += Time.deltaTime;
-            float alpha = 1f - Mathf.Clamp01(elapsed / timeToFade);
+            float alpha = (1f - Mathf.Clamp01(elapsed / timeToFade)) * 0.50f;
             SetFogAlpha(alpha);
             yield return null;
         }

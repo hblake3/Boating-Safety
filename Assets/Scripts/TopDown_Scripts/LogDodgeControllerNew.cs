@@ -201,7 +201,7 @@ public class LogDodgeControllerNew : MonoBehaviour
         RIGHT, MIDRIGHT, CENTER, MIDLEFT, DUMMY, DUMMY, DUMMY
     };
 
-        RepeatPattern(wave, pattern, 2);
+        RepeatPattern(wave, pattern, 1);
 
         return wave;
     }
@@ -216,7 +216,7 @@ public class LogDodgeControllerNew : MonoBehaviour
             LEFT, CENTER, RIGHT, MIDLEFT, MIDRIGHT, LEFT, CENTER, RIGHT, MIDLEFT, MIDRIGHT
     };
 
-        RepeatPattern(wave, pattern, 2);
+        RepeatPattern(wave, pattern, 1);
 
         return wave;
     }
@@ -229,7 +229,7 @@ public class LogDodgeControllerNew : MonoBehaviour
 
         int lastGap = -1;
 
-        for (int repeat = 0; repeat < 6; repeat++)
+        for (int repeat = 0; repeat < 4; repeat++)
         {
             int gap = Random.Range(0, lanes.Length);
             while (gap == lastGap)

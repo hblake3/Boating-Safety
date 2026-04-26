@@ -67,6 +67,6 @@ public class Scrolling_Dock : MonoBehaviour
     private void UpdateDockSpeed(float newSpeed)
     {
         moveSpeed = newSpeed;
-        Debug.Log($"{gameObject.name} speed = {newSpeed}");
+        //Debug.Log($"{gameObject.name} speed = {newSpeed}");
     }
 }
