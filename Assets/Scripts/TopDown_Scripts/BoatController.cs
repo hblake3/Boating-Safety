@@ -21,6 +21,7 @@ public class BoatController : MonoBehaviour
     public float moveSpeed;
     public static float CurrentSpeed { get; private set; }
 
+    // multiplier for how quickly the player can move left/right
     public float boatSpeedMultiplier = 1.5f;
 
     private float input;
@@ -32,13 +33,15 @@ public class BoatController : MonoBehaviour
     [Header("Control Lock")]
     [SerializeField] private bool controlsLocked = false;
 
-    // [ DELEGATES ]
+    // Broadcasts whenever the boat's speed setting changes
     public delegate void OnSpeedChanged(float newSpeed);
     public static OnSpeedChanged onSpeedChanged;
 
     void Start()
     {
+        // store the rotation so steering can tilt relative to it
         baseRotation = boatGO.transform.rotation;
+
         moveSpeed = moveSpeeds[currentSpeedIndex];
         CurrentSpeed = moveSpeed;
         BroadcastSpeed();
@@ -46,6 +49,7 @@ public class BoatController : MonoBehaviour
 
     void Update()
     {
+        // Used when the game wants to temporarily disable player control
         if (controlsLocked)
         {
             keyboardInput = 0f;
@@ -58,6 +62,7 @@ public class BoatController : MonoBehaviour
 
         ReadKeyboardInput();
 
+        // UI input overrides keyboard input when active
         input = uiInput != 0f ? uiInput : keyboardInput;
 
         HandleMovement();
@@ -107,6 +112,7 @@ public class BoatController : MonoBehaviour
 
     private void HandleRotation()
     {
+        // If the player is pressing into the wall, don't keep increasing the tilt
         bool pushingLeftIntoWall = (input < 0f && boatGO.transform.position.x <= -xLimit);
         bool pushingRightIntoWall = (input > 0f && boatGO.transform.position.x >= xLimit);
 

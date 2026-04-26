@@ -13,6 +13,7 @@ public class NoWakeBuoyController : MonoBehaviour
 
     private void Awake()
     {
+        // save the original spot so the buoy can restart from the same place
         startPosition = transform.position;
     }
 
@@ -33,6 +34,7 @@ public class NoWakeBuoyController : MonoBehaviour
 
         transform.position += Vector3.down * moveSpeed * Time.deltaTime;
 
+        // If the buoy leaves the screen, let the segment know
         if (transform.position.y <= despawnY)
         {
             active = false;
@@ -50,6 +52,7 @@ public class NoWakeBuoyController : MonoBehaviour
 
     public void ResetBuoy()
     {
+        // hide and stop the buoy
         active = false;
         transform.position = startPosition;
         gameObject.SetActive(false);

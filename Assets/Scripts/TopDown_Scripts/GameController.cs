@@ -1,5 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -9,6 +12,36 @@ public class GameController : MonoBehaviour
     [SerializeField] private LogDodgeControllerNew logDodge;
     [SerializeField] private NoWakeSegmentController noWakeSegment;
     [SerializeField] private BoatsSegmentController boatsSegment;
+    [SerializeField] private BoatController playerBoatController;
+    [SerializeField] private Transform playerBoatTransform;
+    [SerializeField] private GameObject gamePlayUIElements;
+    [SerializeField] private GameObject endGameDisplay;
+    [SerializeField] private CanvasGroup blackPanelForFadeFX;
+    [SerializeField] private ScoreController scoreController;
+    [SerializeField] private TextMeshProUGUI endGameScoreText;
+    [SerializeField] private float endGameScoreCountDuration = 2.5f;
+
+    // end-game variables & fields
+    [SerializeField] private float boatExitSpeed = 12f;
+    [SerializeField] private float boatExitTargetY = 14f;
+    [SerializeField] private float blackFadeDuration = 1.25f;
+    [SerializeField] private Image badge;
+    [SerializeField] private Sprite captainsBadge;
+    [SerializeField] private Sprite firstMateBadge;
+    [SerializeField] private Sprite guppyBadge;
+    [SerializeField] private GameObject sunburstFX;
+    [SerializeField] private float badgePopScale = 1.15f;
+    [SerializeField] private float badgePopDuration = 0.35f;
+    [SerializeField] private float badgeColorFadeDuration = 0.25f;
+    [SerializeField] private TextMeshProUGUI portraitSpeechBubbleText;
+    private bool endSequenceStarted = false;
+    private Coroutine endSequenceRoutine;
+    [SerializeField] private float badgeSettleScale = 1.15f;
+    [SerializeField] private float noBadgePopScale = 1.1f;
+    [SerializeField] private float noBadgeSettleScale = 0.92f;
+    [SerializeField] private float badgeSettleDuration = 0.2f;
+    [SerializeField] private GameObject mainMenuButton;
+    [SerializeField] private float mainMenuButtonDelay = 3f;
 
     private bool introDialogueDone = false;
     private bool navigationQuizDone = false;
@@ -84,17 +117,34 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        // use the selected debug stage for testing a specific stage
         if (useDebugStart)
         {
             BeginAtStage(debugStartStage);
             return;
         }
 
+        // initializers for end-game scenario
+        if (blackPanelForFadeFX != null)
+        {
+            blackPanelForFadeFX.gameObject.SetActive(false);
+            blackPanelForFadeFX.alpha = 0f;
+        }
+        if (endGameDisplay != null)
+            endGameDisplay.SetActive(false);
+        if (endGameScoreText != null)
+            endGameScoreText.text = "0";
+        if (sunburstFX != null)
+            sunburstFX.SetActive(false);
+        if (mainMenuButton != null)
+            mainMenuButton.SetActive(false);
+
         ShowIntroDialogue();
     }
 
     private void BeginAtStage(DebugStartStage stage)
     {
+        // clear old progress flags before jumping into a debug stage
         ResetSegmentStateForDebug();
 
         switch (stage)
@@ -239,12 +289,14 @@ public class GameController : MonoBehaviour
         otherBoatersQuizDone = false;
         otherBoatersGameplayDone = false;
 
+        // reset active gameplay pieces before starting from a debug point
         onBoatingStopped?.Invoke();
-        onClearFog?.Invoke(); // if you already added this event
+        onClearFog?.Invoke();
     }
 
     private void HandleSpeech()
     {
+        // move from the intro speech into the first quiz
         if (!introDialogueDone)
         {
             introDialogueDone = true;
@@ -281,6 +333,7 @@ public class GameController : MonoBehaviour
             return;
         }
 
+        // after the final dialogue move into the end game flow
         if (otherBoatersGameplayDone && !finalReturnDialogueDone)
         {
             finalReturnDialogueDone = true;
@@ -291,6 +344,7 @@ public class GameController : MonoBehaviour
 
     private void HandleQuizPassed()
     {
+        // each quiz pass starts the next gameplay segment
         if (introDialogueDone && !navigationQuizDone)
         {
             navigationQuizDone = true;
@@ -339,7 +393,80 @@ public class GameController : MonoBehaviour
 
     private void StartEndGameSequence()
     {
-        // We will hook the actual boat fly-off / fade / end display here next
+        if (endSequenceStarted)
+            return;
+
+        endSequenceStarted = true;
+
+        if (endSequenceRoutine != null)
+            StopCoroutine(endSequenceRoutine);
+
+        endSequenceRoutine = StartCoroutine(RunEndGameSequence());
+    }
+
+    private IEnumerator RunEndGameSequence()
+    {
+        if (playerBoatController != null)
+            playerBoatController.LockControls();
+
+        while (playerBoatTransform != null && playerBoatTransform.position.y < boatExitTargetY)
+        {
+            playerBoatTransform.position += Vector3.up * boatExitSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        if (blackPanelForFadeFX != null)
+        {
+            blackPanelForFadeFX.gameObject.SetActive(true);
+            blackPanelForFadeFX.alpha = 0f;
+        }
+
+        if (gamePlayUIElements != null)
+            gamePlayUIElements.SetActive(false);
+
+        // Fade fully to black
+        if (blackPanelForFadeFX != null)
+        {
+            float elapsed = 0f;
+
+            while (elapsed < blackFadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                blackPanelForFadeFX.alpha = Mathf.Clamp01(elapsed / blackFadeDuration);
+                yield return null;
+            }
+
+            blackPanelForFadeFX.alpha = 1f;
+        }
+
+        // switch to end game UI while the screen is fully black
+        if (endGameDisplay != null)
+            endGameDisplay.SetActive(true);
+        // reset the score count up text field
+        if (endGameScoreText != null)
+            endGameScoreText.text = "0";
+
+        // Then fade back out to reveal the end screen
+        if (blackPanelForFadeFX != null)
+        {
+            float elapsed = 0f;
+
+            while (elapsed < blackFadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                blackPanelForFadeFX.alpha = 1f - Mathf.Clamp01(elapsed / blackFadeDuration);
+                yield return null;
+            }
+
+            blackPanelForFadeFX.alpha = 0f;
+        }
+
+        yield return StartCoroutine(CountUpEndGameScore());
+        yield return StartCoroutine(RevealEndBadge());
+
+        yield return new WaitForSeconds(mainMenuButtonDelay);
+        if (mainMenuButton != null)
+            mainMenuButton.SetActive(true);
     }
 
     private void HandleLogDodgeComplete()
@@ -361,6 +488,7 @@ public class GameController : MonoBehaviour
 
         fogGameplayDone = true;
 
+        // fog controller fades the screen back out
         onClearFog?.Invoke();
     }
 
@@ -392,6 +520,7 @@ public class GameController : MonoBehaviour
 
     private void ShowNavigationQuiz()
     {
+        // first safety check before the player starts driving
         QuizQuestionData question = new QuizQuestionData
         {
             question = "What can we do to make sure we are boating safely?",
@@ -531,5 +660,138 @@ public class GameController : MonoBehaviour
         "When boats are coming toward each other head-on, each boater should steer to the right.",
         "Let's make sure you know the rule before we continue."
     });
+    }
+
+    // count up the score in the end-game screen
+    private IEnumerator CountUpEndGameScore()
+    {
+        if (scoreController == null || endGameScoreText == null)
+            yield break;
+
+        int finalScore = scoreController.score;
+        float elapsed = 0f;
+
+        while (elapsed < endGameScoreCountDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            float t = Mathf.Clamp01(elapsed / endGameScoreCountDuration);
+            int displayedScore = Mathf.RoundToInt(Mathf.Lerp(0f, finalScore, t));
+
+            endGameScoreText.text = displayedScore.ToString("N0");
+            yield return null;
+        }
+
+        endGameScoreText.text = finalScore.ToString("N0");
+    }
+
+    private IEnumerator RevealEndBadge()
+    {
+        if (scoreController == null || badge == null)
+            yield break;
+
+        int finalScore = scoreController.score;
+        string badgeMessage = "";
+        bool earnedBadge = true;
+
+        // determine the text and sprite based on user's score
+        if (finalScore > 3000)
+        {
+            badge.sprite = captainsBadge;
+            badgeMessage = "Wow! You earned the Captain's Badge! Perfect!";
+        }
+        else if (finalScore > 2000)
+        {
+            badge.sprite = firstMateBadge;
+            badgeMessage = "You got the First Mate Badge! Fantastic!";
+        }
+        else if (finalScore > 1000)
+        {
+            badge.sprite = guppyBadge;
+            badgeMessage = "You earned the Guppy Badge! Well done!";
+        }
+        else
+        {
+            earnedBadge = false;
+            badgeMessage = "You didn't get a badge this time! Try again!";
+        }
+
+        RectTransform badgeRect = badge.rectTransform;
+        badgeRect.localScale = Vector3.one;
+        badge.color = Color.black;
+
+        // if the user didn't earn a badge, scale out the badge image
+        if (!earnedBadge)
+        {
+            LeanTween.cancel(badge.gameObject);
+            LeanTween.cancel(badgeRect);
+
+            badge.gameObject.SetActive(true);
+            badgeRect.localScale = Vector3.one;
+
+            LeanTween.scale(badgeRect, Vector3.one * noBadgePopScale, badgePopDuration)
+                .setEaseOutBack()
+                .setOnComplete(() =>
+                {
+                    LeanTween.scale(badgeRect, Vector3.zero, badgeSettleDuration)
+                        .setEaseInBack()
+                        .setOnComplete(() =>
+                        {
+                            badge.gameObject.SetActive(false);
+                        });
+                });
+
+            yield return new WaitForSeconds(badgePopDuration + badgeSettleDuration);
+
+            if (portraitSpeechBubbleText != null)
+                portraitSpeechBubbleText.text = badgeMessage;
+
+            yield break;
+        }
+
+        // cancel any remaining tweens
+        LeanTween.cancel(badge.gameObject);
+        LeanTween.cancel(badgeRect);
+
+
+        // otherwise, scale the badge up for the reward effect
+        LeanTween.scale(badgeRect, Vector3.one * badgePopScale, badgePopDuration)
+            .setEaseOutBack()
+            .setOnComplete(() =>
+            {
+                LeanTween.scale(badgeRect, Vector3.one * badgeSettleScale, badgeSettleDuration)
+                    .setEaseInOutSine();
+            });
+
+        bool fadeComplete = false;
+
+        // set its color to white and rotate the sunburst
+        LeanTween.value(badge.gameObject, 0f, 1f, badgeColorFadeDuration)
+            .setOnUpdate((float value) =>
+            {
+                badge.color = Color.Lerp(Color.black, Color.white, value);
+            })
+            .setOnComplete(() =>
+            {
+                badge.color = Color.white;
+                fadeComplete = true;
+
+                if (sunburstFX != null)
+                {
+                    sunburstFX.SetActive(true);
+                    sunburstFX.transform.localEulerAngles = Vector3.zero;
+
+                    LeanTween.cancel(sunburstFX);
+
+                    LeanTween.rotateAroundLocal(sunburstFX, Vector3.forward, -360f, 12f)
+                        .setEaseLinear()
+                        .setRepeat(-1);
+                }
+            });
+
+        yield return new WaitUntil(() => fadeComplete);
+
+        if (portraitSpeechBubbleText != null)
+            portraitSpeechBubbleText.text = badgeMessage;
     }
 }

@@ -6,6 +6,7 @@ public class Boat1PassOutcome : MonoBehaviour
     [SerializeField] private int correctSideRewardAmount = 300;
     [SerializeField] private int wrongSidePenaltyAmount = 300;
 
+    // prevents both triggers from resolving the same encounter.
     private bool resolved = false;
 
     public void ResetRule()
@@ -13,6 +14,7 @@ public class Boat1PassOutcome : MonoBehaviour
         resolved = false;
     }
 
+    // for when the player navigates the correct side of the other boat
     public void ResolveCorrectSide()
     {
         if (resolved)
@@ -22,6 +24,7 @@ public class Boat1PassOutcome : MonoBehaviour
         scoreController.ApplyCustomReward(correctSideRewardAmount);
     }
 
+    // for when the player navigates the wrong side of the other boat
     public void ResolveWrongSide()
     {
         if (resolved)

@@ -58,6 +58,7 @@ public class ScoreController : MonoBehaviour
 
     private void Start()
     {
+        // Set the starting score state before gameplay begins
         score = 0;
         currentStars = 0;
         scoreDecrementAmount = 50;
@@ -69,6 +70,7 @@ public class ScoreController : MonoBehaviour
 
     private void HandleIncrementScoreOverTime()
     {
+        // if already scoring then do not start again
         if (scoreIsIncrementing) return;
 
         scoreIsIncrementing = true;
@@ -86,6 +88,7 @@ public class ScoreController : MonoBehaviour
         {
             yield return new WaitForSeconds(0.25f);
 
+            // pause score increment-ation while player is breaking no wake rules
             if (noWakeRulesActive && !AtLowestSpeed())
                 continue;
 
@@ -114,6 +117,7 @@ public class ScoreController : MonoBehaviour
 
         score -= amount;
 
+        // prevent score from going negative
         if (score < 0)
             score = 0;
 
@@ -126,6 +130,7 @@ public class ScoreController : MonoBehaviour
     {
         int newStarCount = CalculateStarsFromScore();
 
+        // only broadcast when the star count actually changes
         if (newStarCount != currentStars)
         {
             currentStars = newStarCount;
@@ -154,6 +159,7 @@ public class ScoreController : MonoBehaviour
     {
         onStarsChanged?.Invoke(currentStars);
     }
+
 
     // Below is added for manual testing of scoring system. It can be deleted in final production.
     private void Update()
@@ -187,6 +193,7 @@ public class ScoreController : MonoBehaviour
     {
         noWakeRulesActive = true;
 
+        // Restart the penalty loop when zone begins
         if (noWakePenaltyRoutine != null)
             StopCoroutine(noWakePenaltyRoutine);
 
@@ -198,6 +205,7 @@ public class ScoreController : MonoBehaviour
     {
         noWakeRulesActive = false;
 
+        // Stop no wake penalties once the segment is finished
         if (noWakePenaltyRoutine != null)
         {
             StopCoroutine(noWakePenaltyRoutine);
@@ -216,6 +224,7 @@ public class ScoreController : MonoBehaviour
             if (!scoreIsIncrementing)
                 continue;
 
+            // Apply a penalty once per second while the player is speeding
             if (!AtLowestSpeed())
             {
                 ApplyPenalty(noWakePenaltyAmount);
@@ -232,6 +241,7 @@ public class ScoreController : MonoBehaviour
     {
         bool isViolating = noWakeRulesActive && !AtLowestSpeed();
 
+        // notify listeners when the state changes
         if (isViolating == noWakeViolationActive)
             return;
 

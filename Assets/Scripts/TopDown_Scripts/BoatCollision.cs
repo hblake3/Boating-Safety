@@ -16,6 +16,7 @@ public class BoatCollision : MonoBehaviour
 
     void Awake()
     {
+        // holds all renderers of the boat, so the blink effect can toggle the whole boat.
         renderers = GetComponentsInChildren<Renderer>();
     }
 
@@ -24,7 +25,7 @@ public class BoatCollision : MonoBehaviour
         if (isInvulnerable)
             return;
 
-        // Only hazards with the CanHurtBoat tag should deal damage
+        // Only tagged hazards should cause damage.
         if (!other.CompareTag(hurtTag))
             return;
 
@@ -49,6 +50,7 @@ public class BoatCollision : MonoBehaviour
         float timer = 0f;
         bool visible = true;
 
+        // briefly blink the boat so the player knows they were hit and can't be damaged again immediately.
         while (timer < invulnDuration)
         {
             visible = !visible;

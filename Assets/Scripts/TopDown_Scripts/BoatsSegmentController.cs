@@ -6,17 +6,14 @@ public class BoatsSegmentController : MonoBehaviour
     public delegate void OnBoatsSegmentComplete();
     public static OnBoatsSegmentComplete onBoatsSegmentComplete;
 
-    [Header("References")]
     [SerializeField] private Transform playerBoatTransform;
     [SerializeField] private Scrolling_OtherBoat boat1;
     [SerializeField] private Boat1PassOutcome boat1PassOutcome;
 
-    [Header("Timing")]
     [SerializeField] private float startDelay = 2f;
     [SerializeField] private float delayBetweenRounds = 1.5f;
     [SerializeField] private float spawnY = 14f;
 
-    [Header("Rounds")]
     [SerializeField] private int roundsToRun = 3;
 
     private Coroutine routine;
@@ -35,6 +32,7 @@ public class BoatsSegmentController : MonoBehaviour
 
     public void StartSegment()
     {
+        // clear any previous run before starting fresh
         StopSegment();
 
         segmentActive = true;
@@ -51,6 +49,7 @@ public class BoatsSegmentController : MonoBehaviour
         segmentActive = false;
         roundsCompleted = 0;
 
+        // stop the active timing sequence if one is running
         if (routine != null)
         {
             StopCoroutine(routine);
@@ -65,6 +64,7 @@ public class BoatsSegmentController : MonoBehaviour
     {
         yield return new WaitForSeconds(startDelay);
 
+        // segment may have been stopped during the delay
         if (!segmentActive)
             yield break;
 
@@ -73,6 +73,7 @@ public class BoatsSegmentController : MonoBehaviour
 
     private void SpawnBoat1Round()
     {
+        // Reset the pass rule before each new attempt
         boat1PassOutcome.ResetRule();
 
         float spawnX = boat1.transform.position.x;
@@ -89,6 +90,7 @@ public class BoatsSegmentController : MonoBehaviour
 
         roundsCompleted++;
 
+        // End the segment once all rounds have been completed
         if (roundsCompleted >= roundsToRun)
         {
             segmentActive = false;
@@ -103,6 +105,7 @@ public class BoatsSegmentController : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBetweenRounds);
 
+        // make sure the segment was not stopped between rounds
         if (!segmentActive)
             yield break;
 

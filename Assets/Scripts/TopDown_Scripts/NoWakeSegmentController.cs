@@ -42,12 +42,15 @@ public class NoWakeSegmentController : MonoBehaviour
 
     public void StartSegment()
     {
+
+        // clear any previous no wake run before starting again
         StopSegment();
 
         segmentActive = true;
         zoneStarted = false;
         waitingForEndBuoys = false;
 
+        // full reset of the run
         buoyTrigger.ResetTrigger();
         buoysStartController.ResetBuoy();
         buoysEndController.ResetBuoy();
@@ -79,6 +82,8 @@ public class NoWakeSegmentController : MonoBehaviour
     {
         yield return new WaitForSeconds(buoyStartDelay);
 
+
+        // segment may have been stopped before the buoys start moving
         if (!segmentActive)
             yield break;
 
@@ -92,6 +97,7 @@ public class NoWakeSegmentController : MonoBehaviour
 
         zoneStarted = true;
 
+        // Allow speed penalties and dock spawning once the player enters the zone
         scoreController.StartNoWakeRules();
         dockSpawner.BeginSpawning(docksToSpawn, minDelayBetweenDocks, maxDelayBetweenDocks);
     }
@@ -118,6 +124,7 @@ public class NoWakeSegmentController : MonoBehaviour
         if (buoyController != buoysEndController)
             return;
 
+        // spawn & display the ending buoys before completing the segment
         waitingForEndBuoys = false;
         segmentActive = false;
 
