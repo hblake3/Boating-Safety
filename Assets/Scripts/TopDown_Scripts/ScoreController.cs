@@ -37,6 +37,9 @@ public class ScoreController : MonoBehaviour
     public delegate void OnNoWakeViolationChanged(bool isViolating);
     public static OnNoWakeViolationChanged onNoWakeViolationChanged;
 
+    public delegate void OnScoreIncremented(int amount);
+    public static OnScoreIncremented onScoreIncremented;
+
     private void OnEnable()
     {
         GameController.onBoatingStarted += HandleIncrementScoreOverTime;
@@ -234,5 +237,22 @@ public class ScoreController : MonoBehaviour
 
         noWakeViolationActive = isViolating;
         onNoWakeViolationChanged?.Invoke(noWakeViolationActive);
+    }
+    public void ApplyCustomReward(int amount)
+    {
+        if (amount <= 0)
+            return;
+
+        score += amount;
+
+        BroadcastScore();
+        UpdateStars();
+        onScoreIncremented?.Invoke(amount);
+    }
+
+
+    public void ApplyCustomPenalty(int amount)
+    {
+        ApplyPenalty(amount);
     }
 }

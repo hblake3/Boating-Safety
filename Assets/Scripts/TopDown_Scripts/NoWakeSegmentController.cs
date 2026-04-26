@@ -8,7 +8,8 @@ public class NoWakeSegmentController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private ScoreController scoreController;
-    [SerializeField] private NoWakeBuoyController buoyController;
+    [SerializeField] private NoWakeBuoyController buoysStartController;
+    [SerializeField] private NoWakeBuoyController buoysEndController;
     [SerializeField] private NoWakeZoneTrigger buoyTrigger;
     [SerializeField] private DockSpawner dockSpawner;
 
@@ -23,17 +24,20 @@ public class NoWakeSegmentController : MonoBehaviour
     private Coroutine routine;
     private bool segmentActive = false;
     private bool zoneStarted = false;
+    private bool waitingForEndBuoys = false;
 
     private void OnEnable()
     {
         NoWakeZoneTrigger.onNoWakeZoneEntered += HandleNoWakeZoneEntered;
         DockSpawner.onDockSequenceComplete += HandleDockSequenceComplete;
+        NoWakeBuoyController.onBuoyExitedScreen += HandleBuoyExitedScreen;
     }
 
     private void OnDisable()
     {
         NoWakeZoneTrigger.onNoWakeZoneEntered -= HandleNoWakeZoneEntered;
         DockSpawner.onDockSequenceComplete -= HandleDockSequenceComplete;
+        NoWakeBuoyController.onBuoyExitedScreen -= HandleBuoyExitedScreen;
     }
 
     public void StartSegment()
@@ -42,9 +46,11 @@ public class NoWakeSegmentController : MonoBehaviour
 
         segmentActive = true;
         zoneStarted = false;
+        waitingForEndBuoys = false;
 
         buoyTrigger.ResetTrigger();
-        buoyController.ResetBuoy();
+        buoysStartController.ResetBuoy();
+        buoysEndController.ResetBuoy();
         dockSpawner.ResetAllDocks();
         scoreController.StopNoWakeRules();
 
@@ -55,6 +61,7 @@ public class NoWakeSegmentController : MonoBehaviour
     {
         segmentActive = false;
         zoneStarted = false;
+        waitingForEndBuoys = false;
 
         if (routine != null)
         {
@@ -62,7 +69,8 @@ public class NoWakeSegmentController : MonoBehaviour
             routine = null;
         }
 
-        buoyController.ResetBuoy();
+        buoysStartController.ResetBuoy();
+        buoysEndController.ResetBuoy();
         dockSpawner.ResetAllDocks();
         scoreController.StopNoWakeRules();
     }
@@ -74,7 +82,7 @@ public class NoWakeSegmentController : MonoBehaviour
         if (!segmentActive)
             yield break;
 
-        buoyController.StartMoving();
+        buoysStartController.StartMoving();
     }
 
     private void HandleNoWakeZoneEntered()
@@ -94,6 +102,23 @@ public class NoWakeSegmentController : MonoBehaviour
             return;
 
         scoreController.StopNoWakeRules();
+
+        waitingForEndBuoys = true;
+        buoysEndController.StartMoving();
+    }
+
+    private void HandleBuoyExitedScreen(NoWakeBuoyController buoyController)
+    {
+        if (!segmentActive)
+            return;
+
+        if (!waitingForEndBuoys)
+            return;
+
+        if (buoyController != buoysEndController)
+            return;
+
+        waitingForEndBuoys = false;
         segmentActive = false;
 
         onNoWakeSegmentComplete?.Invoke();

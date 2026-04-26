@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private QuizController quiz;
     [SerializeField] private LogDodgeControllerNew logDodge;
     [SerializeField] private NoWakeSegmentController noWakeSegment;
+    [SerializeField] private BoatsSegmentController boatsSegment;
 
     private bool introDialogueDone = false;
     private bool navigationQuizDone = false;
@@ -16,10 +17,13 @@ public class GameController : MonoBehaviour
     private bool fogDialoguePart2Done = false;
     private bool fogQuizDone = false;
     private bool fogGameplayDone = false;
-
+    private bool finalReturnDialogueDone = false;
     private bool noWakeDialogueDone = false;
     private bool noWakeQuizDone = false;
     private bool noWakeGameplayDone = false;
+    private bool otherBoatersDialogueDone = false;
+    private bool otherBoatersQuizDone = false;
+    private bool otherBoatersGameplayDone = false;
 
     public delegate void OnBoatingStarted();
     public static event OnBoatingStarted onBoatingStarted;
@@ -32,6 +36,8 @@ public class GameController : MonoBehaviour
 
     public delegate void OnClearFog();
     public static event OnClearFog onClearFog;
+
+
 
     // *** DEBUG STAGE SELECTION ***
     [SerializeField] private bool useDebugStart = false;
@@ -47,7 +53,10 @@ public class GameController : MonoBehaviour
         FogGameplay,
         NoWakeSpeech,
         NoWakeQuiz,
-        NoWakeGameplay
+        NoWakeGameplay,
+        OtherBoatersSpeech,
+        OtherBoatersQuiz,
+        OtherBoatersGameplay
     }
 
 
@@ -59,6 +68,7 @@ public class GameController : MonoBehaviour
         LogDodgeControllerNew.onLogDodgeFogComplete += HandleFogGameplayComplete;
         FogController.onFogCleared += HandleFogCleared;
         NoWakeSegmentController.onNoWakeSegmentComplete += HandleNoWakeGameplayComplete;
+        BoatsSegmentController.onBoatsSegmentComplete += HandleOtherBoatersGameplayComplete;
     }
 
     private void OnDisable()
@@ -69,6 +79,7 @@ public class GameController : MonoBehaviour
         LogDodgeControllerNew.onLogDodgeFogComplete -= HandleFogGameplayComplete;
         FogController.onFogCleared -= HandleFogCleared;
         NoWakeSegmentController.onNoWakeSegmentComplete -= HandleNoWakeGameplayComplete;
+        BoatsSegmentController.onBoatsSegmentComplete -= HandleOtherBoatersGameplayComplete;
     }
 
     private void Start()
@@ -164,6 +175,51 @@ public class GameController : MonoBehaviour
                 noWakeQuizDone = true;
                 StartNoWakeGameplay();
                 break;
+
+            case DebugStartStage.OtherBoatersSpeech:
+                introDialogueDone = true;
+                navigationQuizDone = true;
+                logDodgeDone = true;
+                fogDialoguePart1Done = true;
+                fogDialoguePart2Done = true;
+                fogQuizDone = true;
+                fogGameplayDone = true;
+                noWakeDialogueDone = true;
+                noWakeQuizDone = true;
+                noWakeGameplayDone = true;
+                ShowPostNoWakeDialogue();
+                break;
+
+            case DebugStartStage.OtherBoatersQuiz:
+                introDialogueDone = true;
+                navigationQuizDone = true;
+                logDodgeDone = true;
+                fogDialoguePart1Done = true;
+                fogDialoguePart2Done = true;
+                fogQuizDone = true;
+                fogGameplayDone = true;
+                noWakeDialogueDone = true;
+                noWakeQuizDone = true;
+                noWakeGameplayDone = true;
+                otherBoatersDialogueDone = true;
+                ShowOtherBoatersQuiz();
+                break;
+
+            case DebugStartStage.OtherBoatersGameplay:
+                introDialogueDone = true;
+                navigationQuizDone = true;
+                logDodgeDone = true;
+                fogDialoguePart1Done = true;
+                fogDialoguePart2Done = true;
+                fogQuizDone = true;
+                fogGameplayDone = true;
+                noWakeDialogueDone = true;
+                noWakeQuizDone = true;
+                noWakeGameplayDone = true;
+                otherBoatersDialogueDone = true;
+                otherBoatersQuizDone = true;
+                StartOtherBoatersGameplay();
+                break;
         }
     }
 
@@ -179,6 +235,9 @@ public class GameController : MonoBehaviour
         noWakeDialogueDone = false;
         noWakeQuizDone = false;
         noWakeGameplayDone = false;
+        otherBoatersDialogueDone = false;
+        otherBoatersQuizDone = false;
+        otherBoatersGameplayDone = false;
 
         onBoatingStopped?.Invoke();
         onClearFog?.Invoke(); // if you already added this event
@@ -214,6 +273,20 @@ public class GameController : MonoBehaviour
             ShowNoWakeQuiz();
             return;
         }
+
+        if (noWakeGameplayDone && !otherBoatersDialogueDone)
+        {
+            otherBoatersDialogueDone = true;
+            ShowOtherBoatersQuiz();
+            return;
+        }
+
+        if (otherBoatersGameplayDone && !finalReturnDialogueDone)
+        {
+            finalReturnDialogueDone = true;
+            StartEndGameSequence();
+            return;
+        }
     }
 
     private void HandleQuizPassed()
@@ -238,6 +311,35 @@ public class GameController : MonoBehaviour
             StartNoWakeGameplay();
             return;
         }
+
+        if (otherBoatersDialogueDone && !otherBoatersQuizDone)
+        {
+            otherBoatersQuizDone = true;
+            StartOtherBoatersGameplay();
+            return;
+        }
+    }
+
+    private void HandleOtherBoatersGameplayComplete()
+    {
+        onBoatingStopped?.Invoke();
+
+        otherBoatersGameplayDone = true;
+        ShowFinalReturnDialogue();
+    }
+
+    private void ShowFinalReturnDialogue()
+    {
+        speech.StartDialogue(new List<string>
+    {
+        "Good job navigating on the lake!",
+        "Let's head back to the docks and see how you did!"
+    });
+    }
+
+    private void StartEndGameSequence()
+    {
+        // We will hook the actual boat fly-off / fade / end display here next
     }
 
     private void HandleLogDodgeComplete()
@@ -389,10 +491,35 @@ public class GameController : MonoBehaviour
         quiz.ShowQuiz(question);
     }
 
+    private void ShowOtherBoatersQuiz()
+    {
+        QuizQuestionData question = new QuizQuestionData
+        {
+            question = "If another boat is coming straight toward you, which way should you steer?",
+            answers = new string[3]
+            {
+            "Steer to the right.",
+            "Steer to the left.",
+            "Close your eyes and hope for the best."
+            },
+            correctAnswerIndex = 0,
+            correctFeedback = "Correct! Both boaters should steer to the right.",
+            incorrectFeedback = "Not quite. Try again!"
+        };
+
+        quiz.ShowQuiz(question);
+    }
+
     private void StartNoWakeGameplay()
     {
         onBoatingStarted?.Invoke();
         noWakeSegment.StartSegment();
+    }
+
+    private void StartOtherBoatersGameplay()
+    {
+        onBoatingStarted?.Invoke();
+        boatsSegment.StartSegment();
     }
 
     private void ShowPostNoWakeDialogue()
@@ -400,9 +527,9 @@ public class GameController : MonoBehaviour
         speech.StartDialogue(new List<string>
     {
         "Nice work through the No Wake zone!",
-        "You slowed down and passed the docks safely.",
-        "Next, you'll learn about another important boating marker.",
-        "Let's keep going!"
+        "Now let's practice what to do when you meet other boaters.",
+        "When boats are coming toward each other head-on, each boater should steer to the right.",
+        "Let's make sure you know the rule before we continue."
     });
     }
 }

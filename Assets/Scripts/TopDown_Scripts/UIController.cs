@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     [SerializeField] ScoreController scoreController;
     [SerializeField] TextMeshProUGUI speedText;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI scoreIncrementText;
     [SerializeField] TextMeshProUGUI scoreDecrementText;
 
     [Header("Star Scoreboard")]
@@ -26,6 +27,7 @@ public class UIController : MonoBehaviour
         ScoreController.onScoreChanged += UpdateScoreUIText;
         ScoreController.onStarsChanged += UpdateStarUI;
         ScoreController.onScoreDecremented += RunDecrementAnimation;
+        ScoreController.onScoreIncremented += RunIncrementAnimation;
         ScoreController.onNoWakeViolationChanged += UpdateNoWakeWarning;
     }
 
@@ -35,6 +37,7 @@ public class UIController : MonoBehaviour
         ScoreController.onScoreChanged -= UpdateScoreUIText;
         ScoreController.onStarsChanged -= UpdateStarUI;
         ScoreController.onScoreDecremented -= RunDecrementAnimation;
+        ScoreController.onScoreIncremented -= RunIncrementAnimation;
         ScoreController.onNoWakeViolationChanged -= UpdateNoWakeWarning;
     }
 
@@ -47,6 +50,17 @@ public class UIController : MonoBehaviour
             CanvasGroup cg = scoreDecrementText.GetComponent<CanvasGroup>();
             if (cg == null)
                 cg = scoreDecrementText.gameObject.AddComponent<CanvasGroup>();
+
+            cg.alpha = 1f;
+        }
+
+        if (scoreIncrementText != null)
+        {
+            scoreIncrementText.gameObject.SetActive(false);
+
+            CanvasGroup cg = scoreIncrementText.GetComponent<CanvasGroup>();
+            if (cg == null)
+                cg = scoreIncrementText.gameObject.AddComponent<CanvasGroup>();
 
             cg.alpha = 1f;
         }
@@ -100,6 +114,41 @@ public class UIController : MonoBehaviour
                 starScoreboardImage.sprite = threeStarSprite;
                 break;
         }
+    }
+
+    private void RunIncrementAnimation(int amount)
+    {
+        if (scoreIncrementText == null) return;
+
+        CanvasGroup cg = scoreIncrementText.GetComponent<CanvasGroup>();
+        if (cg == null)
+            cg = scoreIncrementText.gameObject.AddComponent<CanvasGroup>();
+
+        LeanTween.cancel(scoreIncrementText.gameObject);
+        LeanTween.cancel(scoreIncrementText.rectTransform);
+
+        cg.alpha = 1f;
+        scoreIncrementText.gameObject.SetActive(true);
+        scoreIncrementText.text = $"+{amount}";
+
+        Vector3 startPos = scoreIncrementText.rectTransform.anchoredPosition;
+        Vector3 endPos = startPos + new Vector3(0f, -40f, 0f);
+
+        scoreIncrementText.rectTransform.anchoredPosition = startPos;
+
+        LeanTween.delayedCall(scoreIncrementText.gameObject, 0.15f, () =>
+        {
+            LeanTween.move(scoreIncrementText.rectTransform, endPos, 0.6f)
+                     .setEaseOutQuad();
+
+            LeanTween.alphaCanvas(cg, 0f, 0.6f)
+                     .setEaseOutQuad()
+                     .setOnComplete(() =>
+                     {
+                         scoreIncrementText.rectTransform.anchoredPosition = startPos;
+                         scoreIncrementText.gameObject.SetActive(false);
+                     });
+        });
     }
 
     private void RunDecrementAnimation(int amount)
