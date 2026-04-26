@@ -53,6 +53,7 @@ public class QuizController : MonoBehaviour
         quizRoot.SetActive(false);
         feedbackBubble.SetActive(false);
 
+        // each answer button has its own capture index
         for (int i = 0; i < answerButtons.Length; i++)
         {
             int capturedIndex = i;
@@ -67,6 +68,7 @@ public class QuizController : MonoBehaviour
 
         questionText.text = currentQuestion.question;
 
+        // populate the answer text on to each button
         for (int i = 0; i < answerTexts.Length; i++)
         {
             answerTexts[i].text = currentQuestion.answers[i];
@@ -80,6 +82,7 @@ public class QuizController : MonoBehaviour
 
     private void SubmitAnswer(int answerIndex)
     {
+        // ignore extra clicks while feedback is displayedx
         if (!acceptingInput || currentQuestion == null)
             return;
 
@@ -93,6 +96,7 @@ public class QuizController : MonoBehaviour
 
         bool isCorrect = answerIndex == currentQuestion.correctAnswerIndex;
 
+        // Show the correct or incorrect response text
         feedbackText.text = isCorrect
             ? currentQuestion.correctFeedback
             : currentQuestion.incorrectFeedback;
@@ -110,6 +114,7 @@ public class QuizController : MonoBehaviour
         }
         else
         {
+            // allow player to try again after a wrong answer
             acceptingInput = true;
             SetButtonsInteractable(true);
         }
@@ -117,6 +122,7 @@ public class QuizController : MonoBehaviour
 
     private void SetButtonsInteractable(bool interactable)
     {
+        // toggle all answer buttons
         for (int i = 0; i < answerButtons.Length; i++)
         {
             answerButtons[i].interactable = interactable;

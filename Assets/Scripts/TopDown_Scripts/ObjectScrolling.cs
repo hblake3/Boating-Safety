@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class ObjectScrolling : MonoBehaviour
 {
-    [Header("Scroll Tuning")]
     [SerializeField] private float speedMultiplier = 1f;
     [SerializeField] private float respawnMinY = 9f;
     [SerializeField] private float respawnMaxY = 11f;
     [SerializeField] private float despawnY = -10f;
 
-    [Header("Respawn Separation")]
     [SerializeField] private float minRespawnYSpacing = 2f;
     [SerializeField] private float sameLaneXThreshold = 0.5f;
     [SerializeField] private int maxRespawnAttempts = 10;
@@ -62,6 +60,8 @@ public class ObjectScrolling : MonoBehaviour
 
     private float FindValidRespawnY()
     {
+        
+        // try a few random positions before falling back to a safe height
         for (int i = 0; i < maxRespawnAttempts; i++)
         {
             float candidateY = Random.Range(respawnMinY, respawnMaxY);

@@ -30,6 +30,8 @@ public class StarEffectsController : MonoBehaviour
 
     private void Awake()
     {
+        // reset all star effects before any score changes 
+
         for (int i = 0; i < starEffects.Length; i++)
         {
             if (starEffects[i] == null) continue;
@@ -55,6 +57,7 @@ public class StarEffectsController : MonoBehaviour
 
     private CanvasGroup GetCanvasGroup(int index)
     {
+        // Use the assigned canvas group first if one exists
         if (starCanvasGroups != null &&
             index >= 0 &&
             index < starCanvasGroups.Length &&
@@ -66,6 +69,8 @@ public class StarEffectsController : MonoBehaviour
         if (starEffects[index] == null) return null;
 
         CanvasGroup cg = starEffects[index].GetComponent<CanvasGroup>();
+
+        // if no CG, add one so the fade effect can still work
         if (cg == null)
             cg = starEffects[index].gameObject.AddComponent<CanvasGroup>();
 
@@ -76,6 +81,7 @@ public class StarEffectsController : MonoBehaviour
     {
         if (newStarCount > currentStars)
         {
+            // play gain effects for each new star earned
             for (int i = currentStars; i < newStarCount; i++)
             {
                 PlayGain(i, (i - currentStars) * 0.08f);
@@ -83,6 +89,7 @@ public class StarEffectsController : MonoBehaviour
         }
         else if (newStarCount < currentStars)
         {
+            // play loss effects from the highest star down
             for (int i = currentStars - 1; i >= newStarCount; i--)
             {
                 PlayLoss(i, (currentStars - 1 - i) * 0.06f);
@@ -99,7 +106,7 @@ public class StarEffectsController : MonoBehaviour
         RectTransform star = starEffects[index];
         CanvasGroup cg = GetCanvasGroup(index);
 
-        LeanTween.cancel(star.gameObject);
+        LeanTween.cancel(star.gameObject); // stop any existing tween before replaying the effect
 
         star.localScale = Vector3.one * gainStartScale;
         star.localEulerAngles = Vector3.zero;
@@ -124,7 +131,7 @@ public class StarEffectsController : MonoBehaviour
             .setDelay(delay)
             .setEase(LeanTweenType.easeOutBack);
 
-        // spin much more
+        // spin more
         LeanTween.rotateZ(star.gameObject, gainSpinDegrees, gainSpinTime)
             .setDelay(delay)
             .setEase(LeanTweenType.easeOutCubic);

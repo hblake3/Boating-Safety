@@ -15,6 +15,7 @@ public class Scrolling_Dock : MonoBehaviour
 
     private void Awake()
     {
+        // save the docks original pos for resets
         startPosition = transform.position;
     }
 
@@ -35,6 +36,7 @@ public class Scrolling_Dock : MonoBehaviour
 
         transform.position += Vector3.down * moveSpeed * Time.deltaTime;
 
+        // despawn once the dock moves off screen
         if (transform.position.y <= despawnY)
         {
             Despawn(true);
@@ -43,6 +45,7 @@ public class Scrolling_Dock : MonoBehaviour
 
     public void Spawn(float spawnY)
     {
+        // reset to the lane position before showing the dock
         transform.position = new Vector3(startPosition.x, spawnY, startPosition.z);
         active = true;
         gameObject.SetActive(true);
@@ -53,12 +56,14 @@ public class Scrolling_Dock : MonoBehaviour
         active = false;
         gameObject.SetActive(false);
 
+        // let the spawner know this dock has finished
         if (notify)
             onDockDespawned?.Invoke(this);
     }
 
     public void ForceReset()
     {
+        // hide and move the dock back to its starting position
         active = false;
         gameObject.SetActive(false);
         transform.position = startPosition;

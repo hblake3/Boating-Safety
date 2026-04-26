@@ -25,6 +25,7 @@ public class DockSpawner : MonoBehaviour
     {
         dockPool.Clear();
 
+        // Build the dock pool from all child dock objects
         foreach (Transform child in transform)
         {
             Scrolling_Dock dock = child.GetComponent<Scrolling_Dock>();
@@ -49,6 +50,7 @@ public class DockSpawner : MonoBehaviour
 
     public void BeginSpawning(int docksToSpawn, float minDelay, float maxDelay)
     {
+        // start clean each time
         ResetAllDocks();
 
         if (dockPool.Count == 0)
@@ -66,7 +68,7 @@ public class DockSpawner : MonoBehaviour
         nextDockIndex = 0;
         sequenceActive = true;
 
-        // Shuffle once at the start of the segment
+        // shuffle at the start of the segment
         shuffledDockOrder = new List<Scrolling_Dock>(dockPool);
         Shuffle(shuffledDockOrder);
 
@@ -80,6 +82,7 @@ public class DockSpawner : MonoBehaviour
     {
         sequenceActive = false;
 
+        // stop any active spawning before clearing the run
         if (spawnRoutine != null)
         {
             StopCoroutine(spawnRoutine);
@@ -91,6 +94,7 @@ public class DockSpawner : MonoBehaviour
         activeDockCount = 0;
         nextDockIndex = 0;
 
+        // reset every dock back to its inactive state
         foreach (Scrolling_Dock dock in dockPool)
         {
             if (dock != null)
@@ -106,6 +110,7 @@ public class DockSpawner : MonoBehaviour
         {
             Scrolling_Dock dockToSpawn = shuffledDockOrder[nextDockIndex];
 
+            // wait until this dock is available again
             while (sequenceActive && dockToSpawn.IsActive)
                 yield return null;
 
@@ -134,6 +139,7 @@ public class DockSpawner : MonoBehaviour
 
         activeDockCount = Mathf.Max(0, activeDockCount - 1);
 
+        // finish after every dock has spawned and cleared
         if (docksSpawnedThisRun >= docksTargetThisRun && activeDockCount == 0)
         {
             sequenceActive = false;
@@ -143,6 +149,7 @@ public class DockSpawner : MonoBehaviour
 
     private void Shuffle(List<Scrolling_Dock> docks)
     {
+        // shuffle the dock order
         for (int i = 0; i < docks.Count; i++)
         {
             int randomIndex = Random.Range(i, docks.Count);

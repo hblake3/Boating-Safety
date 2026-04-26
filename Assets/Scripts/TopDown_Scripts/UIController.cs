@@ -43,6 +43,7 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        // prepare decrement text so it is ready when a penalty happens
         if (scoreDecrementText != null)
         {
             scoreDecrementText.gameObject.SetActive(false);
@@ -54,6 +55,7 @@ public class UIController : MonoBehaviour
             cg.alpha = 1f;
         }
 
+        // prep reward text the same as penalty text
         if (scoreIncrementText != null)
         {
             scoreIncrementText.gameObject.SetActive(false);
@@ -78,6 +80,7 @@ public class UIController : MonoBehaviour
     {
         string displaySpeed;
 
+        // map internal values to more user-friendly MPH numbers
         if (speed == boatController.GetMoveSpeeds()[0])
             displaySpeed = "10";
         else if (speed == boatController.GetMoveSpeeds()[1])
@@ -99,6 +102,7 @@ public class UIController : MonoBehaviour
     {
         if (starScoreboardImage == null) return;
 
+        // swap the scoreboard image based on the current star count
         switch (starCount)
         {
             case 0:
@@ -124,6 +128,7 @@ public class UIController : MonoBehaviour
         if (cg == null)
             cg = scoreIncrementText.gameObject.AddComponent<CanvasGroup>();
 
+        // clear any old reward animation before starting a new one
         LeanTween.cancel(scoreIncrementText.gameObject);
         LeanTween.cancel(scoreIncrementText.rectTransform);
 
@@ -159,6 +164,7 @@ public class UIController : MonoBehaviour
         if (cg == null)
             cg = scoreDecrementText.gameObject.AddComponent<CanvasGroup>();
 
+        // Stop the old penalty animation so the text does not overlap itself
         LeanTween.cancel(scoreDecrementText.gameObject);
         LeanTween.cancel(scoreDecrementText.rectTransform);
 
@@ -201,6 +207,9 @@ public class UIController : MonoBehaviour
             noWakeZoneSlowDownText.gameObject.SetActive(true);
             textRect.localScale = Vector3.one;
 
+            // ***
+            // pulse the warning message while the player is going too fast
+            // ***
             LeanTween.scale(textRect, Vector3.one * 1.15f, 0.7f)
                      .setEaseInOutSine()
                      .setLoopPingPong();
