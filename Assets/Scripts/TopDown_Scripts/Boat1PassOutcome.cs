@@ -22,6 +22,8 @@ public class Boat1PassOutcome : MonoBehaviour
 
         resolved = true;
         scoreController.ApplyCustomReward(correctSideRewardAmount);
+        // play correct sound effect
+        UIAudioManager.Instance.PlayCorrect();
     }
 
     // for when the player navigates the wrong side of the other boat

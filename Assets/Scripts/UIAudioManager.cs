@@ -6,11 +6,18 @@ public class UIAudioManager : MonoBehaviour
 
     public AudioSource audioSource;
 
+    [Header("UI")]
     public AudioClip hoverSound;
     public AudioClip clickSound;
     public AudioClip popSound;
     public AudioClip errorSound;
     public AudioClip correctSound;
+
+    [Header("Top-Down")]
+    public AudioClip collisionSound;
+    public AudioClip decrementSound;
+    public AudioClip fanfareSound;
+    public AudioClip encourageSound;
 
     void Awake()
     {
@@ -42,5 +49,25 @@ public class UIAudioManager : MonoBehaviour
     public void PlayCorrect()
     {
         audioSource.PlayOneShot(correctSound);
+    }
+
+    public void PlayBoatHit()
+    {
+        audioSource.PlayOneShot(collisionSound);
+    }
+
+    public void PlayDecrement()
+    {
+        audioSource.PlayOneShot(decrementSound);
+    }
+
+    public void PlayFanfare()
+    {
+        audioSource.PlayOneShot(fanfareSound);
+    }
+
+    public void PlayEncouragement()
+    {
+        audioSource.PlayOneShot(encourageSound);
     }
 }

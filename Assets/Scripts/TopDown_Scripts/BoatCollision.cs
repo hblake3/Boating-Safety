@@ -35,9 +35,13 @@ public class BoatCollision : MonoBehaviour
 
         CameraShake cam = Camera.main.GetComponent<CameraShake>();
         if (cam != null)
+        {
             cam.Shake();
+            // play collision sound
+            UIAudioManager.Instance.PlayBoatHit();
+        }
 
-        if (invulnRoutine != null)
+        if (invulnRoutine != null) // if the boat was already in the process of blinking from a previous hit, stop that and start a new one.
             StopCoroutine(invulnRoutine);
 
         invulnRoutine = StartCoroutine(InvulnerabilityRoutine());

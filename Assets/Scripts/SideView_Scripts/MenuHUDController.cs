@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MenuHUDController : MonoBehaviour
 {
@@ -22,22 +23,36 @@ public class MenuHUDController : MonoBehaviour
         dimCanvasGroup = dimBackground.GetComponent<CanvasGroup>();
     }
 
-    public void ToggleMenu()
+    void Update()
     {
-        menuPanel.transform.position = menuButton.transform.position;
-        // Toggle the menu state
-        isOpen = !isOpen;
-
-        menuAnimator.Play("Menu_Open");
-        dimAnimator.Play("Dim_FadeIn");
-
-        dimCanvasGroup.blocksRaycasts = true;
-
-        menuButton.SetActive(false);
-        // Pause or resume the game based on the menu state
-        // Time.timeScale = isOpen ? 0f : 1f;
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            if (isOpen) CloseMenu();
+            else OpenMenu();
+        }
     }
 
+    public void ToggleMenu()
+    {
+        isOpen = !isOpen;
+
+        if (isOpen)
+        {
+            // OPEN
+            menuPanel.transform.position = menuButton.transform.position;
+
+            menuAnimator.Play("Menu_Open");
+            dimAnimator.Play("Dim_FadeIn");
+
+            dimCanvasGroup.blocksRaycasts = true;
+            menuButton.SetActive(false);
+        }
+        else
+        {
+            // CLOSE
+            Resume();
+        }
+    }
     public void Resume()
     {
         isOpen = false;
@@ -47,6 +62,30 @@ public class MenuHUDController : MonoBehaviour
         dimCanvasGroup.blocksRaycasts = false;
 
         // Time.timeScale = 1f;
+        menuButton.SetActive(true);
+    }
+
+    public void OpenMenu()
+    {
+        isOpen = true;
+
+        menuPanel.transform.position = menuButton.transform.position;
+
+        menuAnimator.Play("Menu_Open");
+        dimAnimator.Play("Dim_FadeIn");
+
+        dimCanvasGroup.blocksRaycasts = true;
+        menuButton.SetActive(false);
+    }
+
+    public void CloseMenu()
+    {
+        isOpen = false;
+
+        menuAnimator.Play("Menu_Close");
+        dimAnimator.Play("Dim_FadeOut");
+
+        dimCanvasGroup.blocksRaycasts = false;
         menuButton.SetActive(true);
     }
 

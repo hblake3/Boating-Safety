@@ -467,6 +467,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(mainMenuButtonDelay);
         if (mainMenuButton != null)
             mainMenuButton.SetActive(true);
+        blackPanelForFadeFX.gameObject.SetActive(false);
     }
 
     private void HandleLogDodgeComplete()
@@ -699,21 +700,29 @@ public class GameController : MonoBehaviour
         {
             badge.sprite = captainsBadge;
             badgeMessage = "Wow! You earned the Captain's Badge! Perfect!";
+            // play fanfare sound for earning the captain's badge (safe null-check)
+            UIAudioManager.Instance?.PlayFanfare();
         }
         else if (finalScore > 2000)
         {
             badge.sprite = firstMateBadge;
             badgeMessage = "You got the First Mate Badge! Fantastic!";
+            // play fanfare sound for earning the first mate badge (safe null-check)
+            UIAudioManager.Instance?.PlayFanfare();
         }
         else if (finalScore > 1000)
         {
             badge.sprite = guppyBadge;
             badgeMessage = "You earned the Guppy Badge! Well done!";
+            // play fanfare sound for earning the guppy badge (safe null-check)
+            UIAudioManager.Instance?.PlayFanfare();
         }
         else
         {
             earnedBadge = false;
             badgeMessage = "You didn't get a badge this time! Try again!";
+            // play encouraging sound for not earning a badge (safe null-check)
+            UIAudioManager.Instance?.PlayEncouragement();
         }
 
         RectTransform badgeRect = badge.rectTransform;

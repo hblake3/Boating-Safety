@@ -117,6 +117,9 @@ public class ScoreController : MonoBehaviour
 
         score -= amount;
 
+        //play penalty sound
+        UIAudioManager.Instance.PlayDecrement();
+
         // prevent score from going negative
         if (score < 0)
             score = 0;

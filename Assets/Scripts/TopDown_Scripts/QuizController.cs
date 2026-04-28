@@ -82,7 +82,7 @@ public class QuizController : MonoBehaviour
 
     private void SubmitAnswer(int answerIndex)
     {
-        // ignore extra clicks while feedback is displayedx
+        // ignore extra clicks while feedback is displayed
         if (!acceptingInput || currentQuestion == null)
             return;
 
@@ -96,10 +96,20 @@ public class QuizController : MonoBehaviour
 
         bool isCorrect = answerIndex == currentQuestion.correctAnswerIndex;
 
-        // Show the correct or incorrect response text
         feedbackText.text = isCorrect
             ? currentQuestion.correctFeedback
             : currentQuestion.incorrectFeedback;
+
+        if (isCorrect)
+        {
+            // Play correct sound (safe null-check)
+            UIAudioManager.Instance?.PlayCorrect();
+        }
+        else
+        {
+            // Play incorrect sound (safe null-check)
+            UIAudioManager.Instance?.PlayError();
+        }
 
         feedbackBubble.SetActive(true);
 
