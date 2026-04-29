@@ -23,6 +23,11 @@ public class MainMenuController : MonoBehaviour
         //StartCoroutine(LoadGame());
         SceneTransitionManager.Instance.TransitionToScene("1");
     }
+    
+    public void OnQuitPressed()
+    {
+        Application.Quit();
+    }
 
     IEnumerator FadeIn()
     {

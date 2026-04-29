@@ -1325,7 +1325,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 759692127}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 517423073}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: OnQuitPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &759692127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,6 +2290,10 @@ MonoBehaviour:
   popSound: {fileID: 0}
   errorSound: {fileID: 0}
   correctSound: {fileID: 0}
+  collisionSound: {fileID: 0}
+  decrementSound: {fileID: 0}
+  fanfareSound: {fileID: 0}
+  encourageSound: {fileID: 0}
 --- !u!4 &1440771572
 Transform:
   m_ObjectHideFlags: 0
