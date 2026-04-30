@@ -3,7 +3,6 @@ using UnityEngine;
 
 public enum LifeJacketType
 {
-    Youth,
     Adult,
     Child
 }
