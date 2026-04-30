@@ -17,10 +17,17 @@ public class MenuHUDController : MonoBehaviour
 
     void Start()
     {
-        menuButton.SetActive(true); 
+        menuButton.SetActive(true);
         menuAnimator = menuPanel.GetComponent<Animator>();
         dimAnimator = dimBackground.GetComponent<Animator>();
         dimCanvasGroup = dimBackground.GetComponent<CanvasGroup>();
+
+        // Let UI animations keep running while the game is paused
+        if (menuAnimator != null)
+            menuAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+
+        if (dimAnimator != null)
+            dimAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     void Update()
@@ -34,34 +41,21 @@ public class MenuHUDController : MonoBehaviour
 
     public void ToggleMenu()
     {
-        isOpen = !isOpen;
-
         if (isOpen)
-        {
-            // OPEN
-            menuPanel.transform.position = menuButton.transform.position;
-
-            menuAnimator.Play("Menu_Open");
-            dimAnimator.Play("Dim_FadeIn");
-
-            dimCanvasGroup.blocksRaycasts = true;
-            menuButton.SetActive(false);
-        }
-        else
-        {
-            // CLOSE
             Resume();
-        }
+        else
+            OpenMenu();
     }
+
     public void Resume()
     {
         isOpen = false;
+
         menuAnimator.Play("Menu_Close");
         dimAnimator.Play("Dim_FadeOut");
 
         dimCanvasGroup.blocksRaycasts = false;
-
-        // Time.timeScale = 1f;
+        Time.timeScale = 1f;
         menuButton.SetActive(true);
     }
 
@@ -75,6 +69,7 @@ public class MenuHUDController : MonoBehaviour
         dimAnimator.Play("Dim_FadeIn");
 
         dimCanvasGroup.blocksRaycasts = true;
+        Time.timeScale = 0f;
         menuButton.SetActive(false);
     }
 
@@ -86,17 +81,19 @@ public class MenuHUDController : MonoBehaviour
         dimAnimator.Play("Dim_FadeOut");
 
         dimCanvasGroup.blocksRaycasts = false;
+        Time.timeScale = 1f;
         menuButton.SetActive(true);
     }
 
     public void LoadMainMenu()
     {
+        Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
-
     public void ExitGame()
     {
+        Time.timeScale = 1f;
         Application.Quit();
     }
 }
