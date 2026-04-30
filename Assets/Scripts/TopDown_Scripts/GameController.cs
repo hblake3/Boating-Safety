@@ -20,6 +20,12 @@ public class GameController : MonoBehaviour
     [SerializeField] private ScoreController scoreController;
     [SerializeField] private TextMeshProUGUI endGameScoreText;
     [SerializeField] private float endGameScoreCountDuration = 2.5f;
+    [SerializeField] private Sprite bearSprite;
+    [SerializeField] private Sprite beaverSprite;
+    [SerializeField] private Image speechBubblePortrait;
+    [SerializeField] private Image quizDisplayPortrait;
+
+
 
     // end-game variables & fields
     [SerializeField] private float boatExitSpeed = 12f;
@@ -117,6 +123,20 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        // set the player's character for the portraits
+        //Debug.Log($"Selected Character = {PlayerPrefs.GetString("SelectedCharacter")}");
+        if (PlayerPrefs.GetString("SelectedCharacter") == "Barry the Bear")
+        {
+            speechBubblePortrait.sprite = bearSprite;
+            quizDisplayPortrait.sprite = bearSprite;
+        }
+        else
+        {
+            speechBubblePortrait.sprite = beaverSprite;
+            quizDisplayPortrait.sprite = beaverSprite;
+        }
+
+
         // use the selected debug stage for testing a specific stage
         if (useDebugStart)
         {
