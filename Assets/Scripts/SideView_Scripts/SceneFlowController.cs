@@ -15,7 +15,7 @@ public class SceneFlowController : MonoBehaviour
     public Sprite zoomedBackgroundSprite;
 
     [Header("Zoom Settings")]
-    public float moveDuration = 0.5f;
+    public float moveDuration = 0.5f; 
 
     public SafetyInspectionManager safetyInspectionManager;
     public SelectionDialogueController dialogueController;
@@ -50,10 +50,11 @@ public class SceneFlowController : MonoBehaviour
         // Smoothly move and scale the character over time
         while (time < moveDuration)
         {
+            // Calculate the interpolation factor (0 to 1)
             float t = time / moveDuration;
 
             // Smooth easing
-            t = Mathf.SmoothStep(0, 1, t);
+            t = Mathf.SmoothStep(0, 1f, t);
 
             characterFullBodyDisplay.anchoredPosition =
                 Vector2.Lerp(startPos, targetPos, t);
@@ -90,7 +91,7 @@ public class SceneFlowController : MonoBehaviour
         while (time < moveDuration)
         {
             float t = time / moveDuration;
-            t = Mathf.SmoothStep(0, 1, t);
+            t = Mathf.SmoothStep(0, 1.5f, t);
             characterFullBodyDisplay.anchoredPosition =
                 Vector2.Lerp(characterFullBodyDisplay.anchoredPosition, startPos, t);
             characterFullBodyDisplay.localScale =

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MenuHUDController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class MenuHUDController : MonoBehaviour
         menuAnimator = menuPanel.GetComponent<Animator>();
         dimAnimator = dimBackground.GetComponent<Animator>();
         dimCanvasGroup = dimBackground.GetComponent<CanvasGroup>();
+        dimCanvasGroup.blocksRaycasts = false;
 
         // Let UI animations keep running while the game is paused
         if (menuAnimator != null)
@@ -50,8 +52,16 @@ public class MenuHUDController : MonoBehaviour
     public void Resume()
     {
         isOpen = false;
+        
+        if (SceneManager.GetActiveScene().name == "1")
+        {
+            menuAnimator.Play("Menu_Close");
+        }
+        else
+        {
+            menuAnimator.Play("Menu_Close2");
+        }
 
-        menuAnimator.Play("Menu_Close");
         dimAnimator.Play("Dim_FadeOut");
 
         dimCanvasGroup.blocksRaycasts = false;
@@ -65,8 +75,17 @@ public class MenuHUDController : MonoBehaviour
 
         menuPanel.transform.position = menuButton.transform.position;
 
-        menuAnimator.Play("Menu_Open");
+        // If scene = 1, menu opens from the right, else from the left
+        if (SceneManager.GetActiveScene().name == "1")
+        {
+            menuAnimator.Play("Menu_Open");
+        }
+        else
+        {
+            menuAnimator.Play("Menu_Open2");
+        }
         dimAnimator.Play("Dim_FadeIn");
+
 
         dimCanvasGroup.blocksRaycasts = true;
         Time.timeScale = 0f;
@@ -77,7 +96,13 @@ public class MenuHUDController : MonoBehaviour
     {
         isOpen = false;
 
-        menuAnimator.Play("Menu_Close");
+        if (SceneManager.GetActiveScene().name == "1")
+        {
+            menuAnimator.Play("Menu_Close");
+        }
+        else
+            menuAnimator.Play("Menu_Close2");
+
         dimAnimator.Play("Dim_FadeOut");
 
         dimCanvasGroup.blocksRaycasts = false;
@@ -88,7 +113,7 @@ public class MenuHUDController : MonoBehaviour
     public void LoadMainMenu()
     {
         Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void ExitGame()

@@ -51,7 +51,7 @@ public class SafetyInspectionManager : MonoBehaviour
 
         speechBubble.SetActive(false);
         // Ensure the speech bubble starts at the top of the screen and is rotated(flipped) to (0,0,0) for the straps question
-        speechBubble.GetComponent<RectTransform>().anchoredPosition = new Vector2(510, 630);
+        speechBubble.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 400);
         speechBubble.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
 
         // Ensure the dialogue text is also rotated back to (0,0,0) in case it was flipped during the ear step
@@ -131,7 +131,7 @@ public class SafetyInspectionManager : MonoBehaviour
 
             // Flip the speech bubble and move it down to the bottom of the screen for better visibility of the character's ear
             speechBubble.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 180);
-            speechBubble.GetComponent<RectTransform>().anchoredPosition = new Vector2(510, -200);
+            speechBubble.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -400);
             // flip the dialogue text
             dialogueText.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 180);
             // move next button to bottom of screen and rotate it to match the flipped speech bubble
